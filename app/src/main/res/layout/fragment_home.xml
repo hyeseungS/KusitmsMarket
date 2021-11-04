@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.HomeFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.naver.maps.map.MapView
+            android:id="@+id/map"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <SearchView
+            android:id="@+id/search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_margin="10dp"
+            android:background="@color/white" />
+
+        <Button
+            android:id="@+id/bookmark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/search"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="즐겨찾기" />
+
+        <Button
+            android:id="@+id/filter1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bookmark"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="필터1" />
+
+        <Button
+            android:id="@+id/filter2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/filter1"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:text="필터2" />
+
+        <com.naver.maps.map.widget.LocationButtonView
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp" />
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

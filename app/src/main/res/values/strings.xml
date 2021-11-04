@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">KusitmsMarket</string>
+    <string name="title_home">홈</string>
+    <string name="title_market">내 시장</string>
+    <string name="title_price">시세</string>
+    <string name="title_mypage">마이페이지</string>
+</resources>
