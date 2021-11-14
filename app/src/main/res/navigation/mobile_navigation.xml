@@ -15,7 +15,17 @@
         android:id="@+id/navigation_market"
         android:name="com.kusitms.kusitmsmarket.ui.market.MarketFragment"
         android:label="@string/title_market"
-        tools:layout="@layout/fragment_market" />
+        tools:layout="@layout/fragment_market" >
+        <action
+            android:id="@+id/action_navigation_market_to_market_detail"
+            app:destination="@id/market_detail" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/market_detail"
+        android:name="com.kusitms.kusitmsmarket.ui.market.MarketDetailFragment"
+        android:label=""
+        tools:layout="@layout/fragment_market_detail" />
 
     <fragment
         android:id="@+id/navigation_price"
