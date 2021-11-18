@@ -15,10 +15,16 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.kusitms.kusitmsmarket.MainActivity;
+import com.kusitms.kusitmsmarket.MarketItem;
+import com.kusitms.kusitmsmarket.MarketRecyclerAdapter;
 import com.kusitms.kusitmsmarket.R;
 import com.kusitms.kusitmsmarket.databinding.FragmentMarketBinding;
+
+import java.util.ArrayList;
 
 public class MarketFragment extends Fragment {
 
@@ -34,20 +40,26 @@ public class MarketFragment extends Fragment {
         binding = FragmentMarketBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1, LIST_MENU) ;
+        RecyclerView mRecyclerView = (RecyclerView) root.findViewById(R.id.myMarketList);
 
-        ListView listview = (ListView) root.findViewById(R.id.myMarketList) ;
-        listview.setAdapter(adapter);
+        /* initiate adapter */
+        MarketRecyclerAdapter mRecyclerAdapter = new MarketRecyclerAdapter();
+
+        /* initiate recyclerview */
+        mRecyclerView.setAdapter(mRecyclerAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+
+        /* adapt data */
+        ArrayList<MarketItem> mMarketItems = new ArrayList<>();
+        for(int i=1;i<=10;i++){
+            mMarketItems.add(new MarketItem(i,i+"번째 식당"));
+        }
+        mRecyclerAdapter.setFriendList(mMarketItems);
+
 
         RelativeLayout relativeLayout = (RelativeLayout) root.findViewById(R.id.myMarketLayout);
         relativeLayout.setPadding(0, getStatusBarHeight(), 0, 0);
-        listview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            @Override
-            public void onItemClick(AdapterView parent, View v, int position, long id){
-                MainActivity activity = (MainActivity) getActivity();
-                activity.moveToDetail();
-            }
-        });
+
         return root;
     }
 
