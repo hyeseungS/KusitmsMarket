@@ -35,7 +35,7 @@
 
     <fragment
         android:id="@+id/navigation_mypage"
-        android:name="com.kusitms.kusitmsmarket.ui.price.PriceFragment"
+        android:name="com.kusitms.kusitmsmarket.ui.mypage.MyPageFragment"
         android:label="@string/title_mypage"
         tools:layout="@layout/fragment_mypage" />
 </navigation>

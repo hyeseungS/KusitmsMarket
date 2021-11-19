@@ -28,6 +28,8 @@
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/drawable/menue_selector.xml" value="0.19322916666666667" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/drawable/search_background.xml" value="0.19025641025641027" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/layout/activity_main.xml" value="0.10144927536231885" />
+        <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/layout/activity_report.xml" value="0.20059880239520958" />
+        <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/layout/activity_report_location.xml" value="0.1" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/layout/edit_dialog.xml" value="0.17708333333333334" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/layout/fragment_dashboard.xml" value="0.10144927536231885" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/layout/fragment_home.xml" value="0.1" />
@@ -35,6 +37,8 @@
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/layout/fragment_market_detail.xml" value="0.22" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/layout/fragment_mypage.xml" value="0.10144927536231885" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/layout/fragment_price.xml" value="0.10144927536231885" />
+        <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/layout/fragment_report.xml" value="0.15443840579710144" />
+        <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/layout/fragment_report_location.xml" value="0.15443840579710144" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/layout/recyclerview_mymarket.xml" value="0.17291666666666666" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/menu/bottom_nav_menu.xml" value="0.17708333333333334" />
       </map>
