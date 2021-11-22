@@ -21,8 +21,12 @@ import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.gson.Gson;
 import com.kusitms.kusitmsmarket.R;
+import com.kusitms.kusitmsmarket.RetrofitAPI;
+import com.kusitms.kusitmsmarket.RetrofitClient;
 import com.kusitms.kusitmsmarket.databinding.FragmentHomeBinding;
+import com.kusitms.kusitmsmarket.marketList;
 import com.naver.maps.geometry.LatLng;
 import com.naver.maps.map.CameraPosition;
 import com.naver.maps.map.CameraUpdate;
@@ -37,7 +41,13 @@ import com.naver.maps.map.overlay.OverlayImage;
 import com.naver.maps.map.util.FusedLocationSource;
 import com.naver.maps.map.widget.LocationButtonView;
 
+import java.io.IOException;
+import java.util.List;
 import java.util.Vector;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeFragment extends Fragment implements OnMapReadyCallback {
 
@@ -121,13 +131,14 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                 // checkedId is the RadioButton selected
                 switch (checkedId) {
                     case R.id.ticket_radioBtn:
-                        //Toast.makeText(getActivity().getApplicationContext(), "1", Toast.LENGTH_SHORT).show();
+                        freeActiveMarkers();
+
                         break;
                     case R.id.everyday_radioBtn:
-                        //Toast.makeText(getActivity().getApplicationContext(), "2", Toast.LENGTH_SHORT).show();
+                        freeActiveMarkers();
                         break;
                     case R.id.fiveDays_radioBtn:
-                        //Toast.makeText(getActivity().getApplicationContext(), "3", Toast.LENGTH_SHORT).show();
+                        freeActiveMarkers();
                         break;
                 }
             }
