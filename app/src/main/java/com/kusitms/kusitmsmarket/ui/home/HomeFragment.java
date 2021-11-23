@@ -102,302 +102,400 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         mLocationSource =
                 new FusedLocationSource(this, PERMISSION_REQUEST_CODE);
 
-        RadioGroup radioGroup1 = (RadioGroup) root.findViewById(R.id.market_size);
-        RadioGroup radioGroup2 = (RadioGroup) root.findViewById(R.id.market_char);
-
-        radioGroup1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                // checkedId is the RadioButton selected
-                switch (checkedId) {
-                    case R.id.big_radioBtn:
-                        freeActiveMarkers();
-                        RetrofitClient.getAPIService().getBigMarketData().enqueue(new Callback<MarketList>() {
-                            @Override
-                            public void onResponse(Call<MarketList> call, Response<MarketList> response) {
-                                Log.d("TAG", response.code() + "");
-
-                                MarketList resource = response.body();
-                                List<MarketList.MarketData> dataList = resource.data;
-
-                                for (MarketList.MarketData data : dataList) {
-                                    List<Address> addressList = null;
-                                    try {
-                                        // 받아온 주소를 지오 코딩을 이용해 변환
-                                        addressList = geocoder.getFromLocationName(
-                                                data.getMarketName(), // 주소
-                                                1); // 최대 검색 결과 개수
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
-
-                                    if(addressList.size() != 0) {
-                                        double latitude = addressList.get(0).getLatitude();
-                                        double longitude = addressList.get(0).getLongitude();
-
-                                        // 좌표(위도, 경도) 생성
-                                        LatLng point = new LatLng(latitude, longitude);
-                                        markersPosition.add(point);
-                                        CameraUpdate cameraUpdate = CameraUpdate.scrollTo(point);
-                                        mNaverMap.moveCamera(cameraUpdate);
-                                    }
-                                }
-
-                                Log.d("test", "성공");
-                            }
-
-                            @Override
-                            public void onFailure(Call<MarketList> call, Throwable t) {
-                                Log.d("test", "실패");
-                                t.printStackTrace();
-                            }
-                        });
-                        break;
-                    case R.id.normal_radioBtn:
-                        freeActiveMarkers();
-                        RetrofitClient.getAPIService().getNormalMarketData().enqueue(new Callback<MarketList>() {
-                            @Override
-                            public void onResponse(Call<MarketList> call, Response<MarketList> response) {
-                                Log.d("TAG", response.code() + "");
-
-                                MarketList resource = response.body();
-                                List<MarketList.MarketData> dataList = resource.data;
-
-                                for (MarketList.MarketData data : dataList) {
-                                    List<Address> addressList = null;
-                                    try {
-                                        // 받아온 주소를 지오 코딩을 이용해 변환
-                                        addressList = geocoder.getFromLocationName(
-                                                data.getMarketName(), // 주소
-                                                1); // 최대 검색 결과 개수
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
-
-                                    if(addressList.size() != 0) {
-                                        double latitude = addressList.get(0).getLatitude();
-                                        double longitude = addressList.get(0).getLongitude();
-
-                                        // 좌표(위도, 경도) 생성
-                                        LatLng point = new LatLng(latitude, longitude);
-                                        markersPosition.add(point);
-                                        CameraUpdate cameraUpdate = CameraUpdate.scrollTo(point);
-                                        mNaverMap.moveCamera(cameraUpdate);
-                                    }
-                                }
-
-                                Log.d("test", "성공");
-                            }
-
-                            @Override
-                            public void onFailure(Call<MarketList> call, Throwable t) {
-                                Log.d("test", "실패");
-                                t.printStackTrace();
-                            }
-                        });
-                        break;
-                    case R.id.small_radioBtn:
-                        RetrofitClient.getAPIService().getSmallMarketData().enqueue(new Callback<MarketList>() {
-                            @Override
-                            public void onResponse(Call<MarketList> call, Response<MarketList> response) {
-                                Log.d("TAG", response.code() + "");
-
-                                MarketList resource = response.body();
-                                List<MarketList.MarketData> dataList = resource.data;
-
-                                for (MarketList.MarketData data : dataList) {
-                                    List<Address> addressList = null;
-                                    try {
-                                        // 받아온 주소를 지오 코딩을 이용해 변환
-                                        addressList = geocoder.getFromLocationName(
-                                                data.getMarketName(), // 주소
-                                                1); // 최대 검색 결과 개수
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
-
-                                    if(addressList.size() != 0) {
-                                        double latitude = addressList.get(0).getLatitude();
-                                        double longitude = addressList.get(0).getLongitude();
-
-                                        // 좌표(위도, 경도) 생성
-                                        LatLng point = new LatLng(latitude, longitude);
-                                        markersPosition.add(point);
-                                        CameraUpdate cameraUpdate = CameraUpdate.scrollTo(point);
-                                        mNaverMap.moveCamera(cameraUpdate);
-                                    }
-                                }
-
-                                Log.d("test", "성공");
-                            }
-
-                            @Override
-                            public void onFailure(Call<MarketList> call, Throwable t) {
-                                Log.d("test", "실패");
-                                t.printStackTrace();
-                            }
-                        });
-                        break;
-                }
-            }
-        });
-
-        radioGroup2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                // checkedId is the RadioButton selected
-                switch (checkedId) {
-                    case R.id.ticket_radioBtn:
-                        freeActiveMarkers();
-                        RetrofitClient.getAPIService().getTicketStoreData().enqueue(new Callback<StoreList>() {
-                            @Override
-                            public void onResponse(Call<StoreList> call, Response<StoreList> response) {
-                                Log.d("TAG", response.code() + "");
-
-                                StoreList resource = response.body();
-                                List<StoreList.StoreData> dataList = resource.data;
-
-                                for (StoreList.StoreData data : dataList) {
-                                    List<Address> addressList = null;
-                                    try {
-                                        // 받아온 주소를 지오 코딩을 이용해 변환
-                                        addressList = geocoder.getFromLocationName(
-                                                data.getStoreAddress(), // 주소
-                                                1); // 최대 검색 결과 개수
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
-
-                                    if(addressList.size() != 0) {
-                                        double latitude = addressList.get(0).getLatitude();
-                                        double longitude = addressList.get(0).getLongitude();
-
-                                        // 좌표(위도, 경도) 생성
-                                        LatLng point = new LatLng(latitude, longitude);
-                                        markersPosition.add(point);
-                                        CameraUpdate cameraUpdate = CameraUpdate.scrollTo(point);
-                                        mNaverMap.moveCamera(cameraUpdate);
-                                    }
-                                }
-
-                                Log.d("test", "성공");
-                            }
-
-                            @Override
-                            public void onFailure(Call<StoreList> call, Throwable t) {
-                                Log.d("test", "실패");
-                                t.printStackTrace();
-                            }
-                        });
-
-                        break;
-                    case R.id.everyday_radioBtn:
-                        freeActiveMarkers();
-                        RetrofitClient.getAPIService().getEverydayMarketData().enqueue(new Callback<MarketList>() {
-                            @Override
-                            public void onResponse(Call<MarketList> call, Response<MarketList> response) {
-                                Log.d("TAG", response.code() + "");
-
-                                MarketList resource = response.body();
-                                List<MarketList.MarketData> dataList = resource.data;
-
-                                for (MarketList.MarketData data : dataList) {
-                                    List<Address> addressList = null;
-                                    try {
-                                        // 받아온 주소를 지오 코딩을 이용해 변환
-                                        addressList = geocoder.getFromLocationName(
-                                                data.getMarketName(), // 주소
-                                                1); // 최대 검색 결과 개수
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
-
-                                    if(addressList.size() != 0) {
-                                        double latitude = addressList.get(0).getLatitude();
-                                        double longitude = addressList.get(0).getLongitude();
-
-                                        // 좌표(위도, 경도) 생성
-                                        LatLng point = new LatLng(latitude, longitude);
-                                        markersPosition.add(point);
-                                        CameraUpdate cameraUpdate = CameraUpdate.scrollTo(point);
-                                        mNaverMap.moveCamera(cameraUpdate);
-                                    }
-                                }
-
-                                Log.d("test", "성공");
-                            }
-
-                            @Override
-                            public void onFailure(Call<MarketList> call, Throwable t) {
-                                Log.d("test", "실패");
-                                t.printStackTrace();
-                            }
-                        });
-                        break;
-                    case R.id.fiveDays_radioBtn:
-                        freeActiveMarkers();
-                        RetrofitClient.getAPIService().getFiveDaysMarketData().enqueue(new Callback<MarketList>() {
-                            @Override
-                            public void onResponse(Call<MarketList> call, Response<MarketList> response) {
-                                Log.d("TAG", response.code() + "");
-
-                                MarketList resource = response.body();
-                                List<MarketList.MarketData> dataList = resource.data;
-
-                                for (MarketList.MarketData data : dataList) {
-                                    List<Address> addressList = null;
-                                    try {
-                                        // 받아온 주소를 지오 코딩을 이용해 변환
-                                        addressList = geocoder.getFromLocationName(
-                                                data.getMarketName(), // 주소
-                                                1); // 최대 검색 결과 개수
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
-
-                                    if(addressList.size() != 0) {
-                                        double latitude = addressList.get(0).getLatitude();
-                                        double longitude = addressList.get(0).getLongitude();
-
-                                        // 좌표(위도, 경도) 생성
-                                        LatLng point = new LatLng(latitude, longitude);
-                                        markersPosition.add(point);
-                                        CameraUpdate cameraUpdate = CameraUpdate.scrollTo(point);
-                                        mNaverMap.moveCamera(cameraUpdate);
-                                    }
-                                }
-
-                                Log.d("test", "성공");
-                            }
-
-                            @Override
-                            public void onFailure(Call<MarketList> call, Throwable t) {
-                                Log.d("test", "실패");
-                                t.printStackTrace();
-                            }
-                        });
-                        break;
-                }
-            }
-        });
-
-        ImageButton myLocationButton = (ImageButton) root.findViewById(R.id.my_location);
-        myLocationButton.setOnClickListener(new View.OnClickListener() {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public void onClick(View v) {
+            public boolean onQueryTextSubmit(String s) {
+                freeActiveMarkers();
+                RetrofitClient.getAPIService().getSearchStoreData(s).enqueue(new Callback<StoreList>() {
+                    @Override
+                    public void onResponse(Call<StoreList> call, Response<StoreList> response) {
+                        Log.d("TAG", response.code() + "");
+
+                        if (response.isSuccessful() && response.body() != null) {
+                            StoreList resource = response.body();
+                            List<StoreList.StoreData> dataList = resource.data;
+                            List<Address> addressList = null;
+                            try {
+                                // 받아온 주소를 지오 코딩을 이용해 변환
+                                addressList = geocoder.getFromLocationName(
+                                        dataList.get(0).getStoreAddress(), // 주소
+                                        1); // 최대 검색 결과 개수
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            if (addressList.size() != 0) {
+                                double latitude = addressList.get(0).getLatitude();
+                                double longitude = addressList.get(0).getLongitude();
+
+                                // 좌표(위도, 경도) 생성
+                                LatLng point = new LatLng(latitude, longitude);
+                                markersPosition.add(point);
+                                CameraUpdate cameraUpdate = CameraUpdate.scrollTo(point);
+                                mNaverMap.moveCamera(cameraUpdate);
+                            }
+                            Log.d("test", "성공");
+                        }
+                    }
+
+                    @Override
+                    public void onFailure (Call < StoreList > call, Throwable t){
+                        Log.d("test", "실패");
+                        t.printStackTrace();
+                    }
+                });
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return true;
+            }
+        });
+
+
+    RadioGroup radioGroup1 = (RadioGroup) root.findViewById(R.id.market_size);
+    RadioGroup radioGroup2 = (RadioGroup) root.findViewById(R.id.market_char);
+
+        radioGroup1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+
+    {
+        public void onCheckedChanged (RadioGroup group,int checkedId){
+        // checkedId is the RadioButton selected
+        switch (checkedId) {
+            case R.id.big_radioBtn:
+                freeActiveMarkers();
+                RetrofitClient.getAPIService().getBigMarketData().enqueue(new Callback<MarketList>() {
+                    @Override
+                    public void onResponse(Call<MarketList> call, Response<MarketList> response) {
+                        Log.d("TAG", response.code() + "");
+
+                        MarketList resource = response.body();
+                        List<MarketList.MarketData> dataList = resource.data;
+
+                        for (MarketList.MarketData data : dataList) {
+                            List<Address> addressList = null;
+                            try {
+                                // 받아온 주소를 지오 코딩을 이용해 변환
+                                addressList = geocoder.getFromLocationName(
+                                        data.getMarketName(), // 주소
+                                        1); // 최대 검색 결과 개수
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            if (addressList.size() != 0) {
+                                double latitude = addressList.get(0).getLatitude();
+                                double longitude = addressList.get(0).getLongitude();
+
+                                // 좌표(위도, 경도) 생성
+                                LatLng point = new LatLng(latitude, longitude);
+                                markersPosition.add(point);
+                            }
+                        }
+
+                        Log.d("test", "성공");
+                    }
+
+                    @Override
+                    public void onFailure(Call<MarketList> call, Throwable t) {
+                        Log.d("test", "실패");
+                        t.printStackTrace();
+                    }
+                });
+                // 위치 추적 모드 지정 가능 내 위치로 이동
                 mNaverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
-            }
-        });
+                break;
+            case R.id.normal_radioBtn:
+                freeActiveMarkers();
+                RetrofitClient.getAPIService().getNormalMarketData().enqueue(new Callback<MarketList>() {
+                    @Override
+                    public void onResponse(Call<MarketList> call, Response<MarketList> response) {
+                        Log.d("TAG", response.code() + "");
 
-        ImageButton bookmarkButton = (ImageButton) root.findViewById(R.id.bookmark);
-        bookmarkButton.setOnClickListener((new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+                        MarketList resource = response.body();
+                        List<MarketList.MarketData> dataList = resource.data;
 
-            }
-        }));
+                        for (MarketList.MarketData data : dataList) {
+                            List<Address> addressList = null;
+                            try {
+                                // 받아온 주소를 지오 코딩을 이용해 변환
+                                addressList = geocoder.getFromLocationName(
+                                        data.getMarketName(), // 주소
+                                        1); // 최대 검색 결과 개수
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            if (addressList.size() != 0) {
+                                double latitude = addressList.get(0).getLatitude();
+                                double longitude = addressList.get(0).getLongitude();
+
+                                // 좌표(위도, 경도) 생성
+                                LatLng point = new LatLng(latitude, longitude);
+                                markersPosition.add(point);
+                            }
+                        }
+
+                        Log.d("test", "성공");
+                    }
+
+                    @Override
+                    public void onFailure(Call<MarketList> call, Throwable t) {
+                        Log.d("test", "실패");
+                        t.printStackTrace();
+                    }
+                });
+                // 위치 추적 모드 지정 가능 내 위치로 이동
+                mNaverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
+                break;
+            case R.id.small_radioBtn:
+                RetrofitClient.getAPIService().getSmallMarketData().enqueue(new Callback<MarketList>() {
+                    @Override
+                    public void onResponse(Call<MarketList> call, Response<MarketList> response) {
+                        Log.d("TAG", response.code() + "");
+
+                        MarketList resource = response.body();
+                        List<MarketList.MarketData> dataList = resource.data;
+
+                        for (MarketList.MarketData data : dataList) {
+                            List<Address> addressList = null;
+                            try {
+                                // 받아온 주소를 지오 코딩을 이용해 변환
+                                addressList = geocoder.getFromLocationName(
+                                        data.getMarketName(), // 주소
+                                        1); // 최대 검색 결과 개수
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            if (addressList.size() != 0) {
+                                double latitude = addressList.get(0).getLatitude();
+                                double longitude = addressList.get(0).getLongitude();
+
+                                // 좌표(위도, 경도) 생성
+                                LatLng point = new LatLng(latitude, longitude);
+                                markersPosition.add(point);
+                                CameraUpdate cameraUpdate = CameraUpdate.scrollTo(point);
+                                mNaverMap.moveCamera(cameraUpdate);
+                            }
+                        }
+
+                        Log.d("test", "성공");
+                    }
+
+                    @Override
+                    public void onFailure(Call<MarketList> call, Throwable t) {
+                        Log.d("test", "실패");
+                        t.printStackTrace();
+                    }
+                });
+                break;
+        }
+    }
+    });
+
+        radioGroup2.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+
+    {
+        public void onCheckedChanged (RadioGroup group,int checkedId){
+        // checkedId is the RadioButton selected
+        switch (checkedId) {
+            case R.id.ticket_radioBtn:
+                freeActiveMarkers();
+                RetrofitClient.getAPIService().getTicketStoreData().enqueue(new Callback<StoreList>() {
+                    @Override
+                    public void onResponse(Call<StoreList> call, Response<StoreList> response) {
+                        Log.d("TAG", response.code() + "");
+
+                        StoreList resource = response.body();
+                        List<StoreList.StoreData> dataList = resource.data;
+
+                        for (StoreList.StoreData data : dataList) {
+                            List<Address> addressList = null;
+                            try {
+                                // 받아온 주소를 지오 코딩을 이용해 변환
+                                addressList = geocoder.getFromLocationName(
+                                        data.getStoreAddress(), // 주소
+                                        1); // 최대 검색 결과 개수
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            if (addressList.size() != 0) {
+                                double latitude = addressList.get(0).getLatitude();
+                                double longitude = addressList.get(0).getLongitude();
+
+                                // 좌표(위도, 경도) 생성
+                                LatLng point = new LatLng(latitude, longitude);
+                                markersPosition.add(point);
+                            }
+                        }
+
+                        Log.d("test", "성공");
+                    }
+
+                    @Override
+                    public void onFailure(Call<StoreList> call, Throwable t) {
+                        Log.d("test", "실패");
+                        t.printStackTrace();
+                    }
+                });
+                // 위치 추적 모드 지정 가능 내 위치로 이동
+                mNaverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
+                break;
+            case R.id.everyday_radioBtn:
+                freeActiveMarkers();
+                RetrofitClient.getAPIService().getEverydayMarketData().enqueue(new Callback<MarketList>() {
+                    @Override
+                    public void onResponse(Call<MarketList> call, Response<MarketList> response) {
+                        Log.d("TAG", response.code() + "");
+
+                        MarketList resource = response.body();
+                        List<MarketList.MarketData> dataList = resource.data;
+
+                        for (MarketList.MarketData data : dataList) {
+                            List<Address> addressList = null;
+                            try {
+                                // 받아온 주소를 지오 코딩을 이용해 변환
+                                addressList = geocoder.getFromLocationName(
+                                        data.getMarketName(), // 주소
+                                        1); // 최대 검색 결과 개수
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            if (addressList.size() != 0) {
+                                double latitude = addressList.get(0).getLatitude();
+                                double longitude = addressList.get(0).getLongitude();
+
+                                // 좌표(위도, 경도) 생성
+                                LatLng point = new LatLng(latitude, longitude);
+                                markersPosition.add(point);
+                            }
+                        }
+
+                        Log.d("test", "성공");
+                    }
+
+                    @Override
+                    public void onFailure(Call<MarketList> call, Throwable t) {
+                        Log.d("test", "실패");
+                        t.printStackTrace();
+                    }
+                });
+                // 위치 추적 모드 지정 가능 내 위치로 이동
+                mNaverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
+                break;
+            case R.id.fiveDays_radioBtn:
+                freeActiveMarkers();
+                RetrofitClient.getAPIService().getFiveDaysMarketData().enqueue(new Callback<MarketList>() {
+                    @Override
+                    public void onResponse(Call<MarketList> call, Response<MarketList> response) {
+                        Log.d("TAG", response.code() + "");
+
+                        MarketList resource = response.body();
+                        List<MarketList.MarketData> dataList = resource.data;
+
+                        for (MarketList.MarketData data : dataList) {
+                            List<Address> addressList = null;
+                            try {
+                                // 받아온 주소를 지오 코딩을 이용해 변환
+                                addressList = geocoder.getFromLocationName(
+                                        data.getMarketName(), // 주소
+                                        1); // 최대 검색 결과 개수
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            if (addressList.size() != 0) {
+                                double latitude = addressList.get(0).getLatitude();
+                                double longitude = addressList.get(0).getLongitude();
+
+                                // 좌표(위도, 경도) 생성
+                                LatLng point = new LatLng(latitude, longitude);
+                                markersPosition.add(point);
+                            }
+                        }
+
+                        Log.d("test", "성공");
+                    }
+
+                    @Override
+                    public void onFailure(Call<MarketList> call, Throwable t) {
+                        Log.d("test", "실패");
+                        t.printStackTrace();
+                    }
+                });
+                // 위치 추적 모드 지정 가능 내 위치로 이동
+                mNaverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
+                break;
+        }
+    }
+    });
+
+    ImageButton myLocationButton = (ImageButton) root.findViewById(R.id.my_location);
+        myLocationButton.setOnClickListener(new View.OnClickListener()
+
+    {
+        @Override
+        public void onClick (View v){
+            freeActiveMarkers();
+            RetrofitClient.getAPIService().getMarketData().enqueue(new Callback<MarketList>() {
+                @Override
+                public void onResponse(Call<MarketList> call, Response<MarketList> response) {
+                    Log.d("TAG", response.code() + "");
+
+                    MarketList resource = response.body();
+                    List<MarketList.MarketData> dataList = resource.data;
+
+                    for (MarketList.MarketData data : dataList) {
+                        List<Address> addressList = null;
+                        try {
+                            // 받아온 주소를 지오 코딩을 이용해 변환
+                            addressList = geocoder.getFromLocationName(
+                                    data.getMarketName(), // 주소
+                                    1); // 최대 검색 결과 개수
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+
+                        if (addressList.size() != 0) {
+                            double latitude = addressList.get(0).getLatitude();
+                            double longitude = addressList.get(0).getLongitude();
+
+                            // 좌표(위도, 경도) 생성
+                            LatLng point = new LatLng(latitude, longitude);
+                            markersPosition.add(point);
+                        }
+                    }
+
+                    Log.d("test", "성공");
+                }
+
+                @Override
+                public void onFailure(Call<MarketList> call, Throwable t) {
+                    Log.d("test", "실패");
+                    t.printStackTrace();
+                }
+            });
+        mNaverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
+    }
+    });
+
+    ImageButton bookmarkButton = (ImageButton) root.findViewById(R.id.bookmark);
+        bookmarkButton.setOnClickListener((new View.OnClickListener()
+
+    {
+        @Override
+        public void onClick (View v){
+
+    }
+    }));
 
         return root;
 
-    }
+}
 
     @Override
     public void onDestroyView() {
@@ -438,9 +536,6 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
         // NaverMap에 locationSource를 set하면 위치 추적 기능을 사용 가능
         mNaverMap.setLocationSource(mLocationSource);
 
-        // 위치 추적 모드 지정 가능 내 위치로 이동
-        mNaverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
-
         // UI 컨트롤 재배치
         UiSettings uiSettings = mNaverMap.getUiSettings();
         uiSettings.setCompassEnabled(false); // 기본값 : true
@@ -455,6 +550,47 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
 
         markersPosition = new Vector<LatLng>();
 
+        RetrofitClient.getAPIService().getMarketData().enqueue(new Callback<MarketList>() {
+            @Override
+            public void onResponse(Call<MarketList> call, Response<MarketList> response) {
+                Log.d("TAG", response.code() + "");
+
+                MarketList resource = response.body();
+                List<MarketList.MarketData> dataList = resource.data;
+
+                for (MarketList.MarketData data : dataList) {
+                    List<Address> addressList = null;
+                    try {
+                        // 받아온 주소를 지오 코딩을 이용해 변환
+                        addressList = geocoder.getFromLocationName(
+                                data.getMarketName(), // 주소
+                                1); // 최대 검색 결과 개수
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    if (addressList.size() != 0) {
+                        double latitude = addressList.get(0).getLatitude();
+                        double longitude = addressList.get(0).getLongitude();
+
+                        // 좌표(위도, 경도) 생성
+                        LatLng point = new LatLng(latitude, longitude);
+                        markersPosition.add(point);
+                    }
+                }
+
+                Log.d("test", "성공");
+            }
+
+            @Override
+            public void onFailure(Call<MarketList> call, Throwable t) {
+                Log.d("test", "실패");
+                t.printStackTrace();
+            }
+
+        });
+        // 위치 추적 모드 지정 가능 내 위치로 이동
+        mNaverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
         // 카메라 이동되면 호출되는 이벤트
         naverMap.addOnCameraChangeListener(new NaverMap.OnCameraChangeListener() {
 

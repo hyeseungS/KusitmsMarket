@@ -31,6 +31,11 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        // Status Bar 높이만큼 Padding 부여
+        toolbar.setPadding(0, getStatusBarHeight(), 0, 0);
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -43,6 +48,16 @@ public class MainActivity extends AppCompatActivity {
 
         mContext = this;
 
+    }
+
+    //status bar의 높이 계산
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0)
+            result = getResources().getDimensionPixelSize(resourceId);
+
+        return result;
     }
 
     // MarketFragment(내시장)에서 MarketDetailFragment로 이동

@@ -26,23 +26,11 @@ public class MarketDetailFragment extends Fragment implements View.OnClickListen
         binding = FragmentMarketDetailBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        LinearLayout linearLayout = (LinearLayout) root.findViewById(R.id.detailInfo);
-        linearLayout.setPadding(0, getStatusBarHeight(), 0, 0);
+
 
         AppCompatButton open = (AppCompatButton) root.findViewById(R.id.edit_button);
         open.setOnClickListener(this);
         return root;
-    }
-
-    //status bar의 높이 계산
-    public int getStatusBarHeight()
-    {
-        int result = 0;
-        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
-        if (resourceId > 0)
-            result = getResources().getDimensionPixelSize(resourceId);
-
-        return result;
     }
 
     @Override

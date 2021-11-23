@@ -2,6 +2,7 @@ package com.kusitms.kusitmsmarket;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 
 public interface RetrofitAPI {
     @GET("/market/filter/gift")
@@ -21,4 +22,13 @@ public interface RetrofitAPI {
 
     @GET("/market/filter2/small")
     Call<MarketList> getSmallMarketData();
+
+    @GET("/store/getOne")
+    Call<StoreList> getSearchStoreData(@Query("name") String name);
+    
+    @GET("/market")
+    Call<MarketList> getMarketData();
+
+    @GET("/")
+    Call<MarketList> getAll();
 }
