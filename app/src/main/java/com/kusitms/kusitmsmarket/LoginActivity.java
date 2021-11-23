@@ -37,8 +37,10 @@ public class LoginActivity extends AppCompatActivity {
         btnLoginGoogle = findViewById(R.id.btn_login_google);
 
 
+        // MainActivity
         Intent intentMainActivity = new Intent(this, MainActivity.class);
-
+        // RegisterActivity
+        Intent intentRegisterActivity = new Intent(this, RegisterActivity.class);
 
         // 로그인 버튼 누를 때
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -81,7 +83,8 @@ public class LoginActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                //move To RegisterActivity
+                startActivity(intentRegisterActivity);
             }
         });
 

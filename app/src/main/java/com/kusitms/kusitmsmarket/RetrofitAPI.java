@@ -1,12 +1,15 @@
 package com.kusitms.kusitmsmarket;
 
 import com.kusitms.kusitmsmarket.request.LoginRequest;
+import com.kusitms.kusitmsmarket.request.SignUpRequest;
+import com.kusitms.kusitmsmarket.response.SignUpResponse;
 import com.kusitms.kusitmsmarket.response.UserToken;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface RetrofitAPI {
@@ -46,4 +49,14 @@ public interface RetrofitAPI {
     // 로그인
     @POST("/api/authenticate")
     Call<UserToken> postUserTokenData(@Body LoginRequest request);
+
+    // validate
+    @GET("/api/check-duplicate/id/{username}")
+    Call<String> getValidateUsername(@Path("username") String username);
+
+    @GET("/api/check-duplicate/nickname/{nickname}")
+    Call<String> getValidateNickname(@Path("nickname") String nickname);
+
+    @POST("/api/signup")
+    Call<SignUpResponse> postSingUp(@Body SignUpRequest request);
 }

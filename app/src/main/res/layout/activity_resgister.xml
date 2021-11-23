@@ -1,136 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ResgisterActivity">
-
-    <EditText
-        android:id="@+id/et_id"
-        android:layout_width="366dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="200dp"
-        android:ems="10"
-        android:hint="이메일 주소"
-        android:inputType="textPersonName"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="22dp"
-        tools:ignore="MissingConstraints" />
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".RegisterActivity">
 
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@drawable/logo"
-        tools:layout_editor_absoluteX="130dp"
-        tools:layout_editor_absoluteY="16dp"
         tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/btn_confirm_email"
-        android:layout_width="96dp"
-        android:layout_height="42dp"
-        android:text="중복 확인"
-        tools:layout_editor_absoluteX="280dp"
-        tools:layout_editor_absoluteY="192dp"
-        tools:ignore="MissingConstraints" />
 
-    <Button
-        android:id="@+id/btn_confirm_nickname"
-        android:layout_width="96dp"
-        android:layout_height="42dp"
-        android:text="중복 확인"
-        tools:layout_editor_absoluteX="280dp"
-        tools:layout_editor_absoluteY="375dp"
-        tools:ignore="MissingConstraints" />
 
-    <EditText
-        android:id="@+id/et_phone"
-        android:layout_width="366dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="전화번호"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/et_nickname"
-        app:layout_constraintStart_toStartOf="@+id/et_nickname"
-        app:layout_constraintTop_toBottomOf="@+id/et_nickname" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/et_nickname"
-        android:layout_width="366dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="닉네임"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/et_passconfirm"
-        app:layout_constraintStart_toStartOf="@+id/et_passconfirm"
-        app:layout_constraintTop_toBottomOf="@+id/et_passconfirm" />
+        <EditText
+            android:id="@+id/et_id"
+            android:layout_width="366dp"
+            android:layout_height="45dp"
+            android:ems="10"
+            android:hint="이메일 주소"
+            android:inputType="textPersonName"/>
 
-    <Button
-        android:id="@+id/btn_register"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="96dp"
-        android:text="회원가입"
-        app:layout_constraintEnd_toEndOf="@+id/et_phone"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/et_phone"
-        app:layout_constraintTop_toBottomOf="@+id/et_phone" />
+        <Button
+            android:id="@+id/btn_confirm_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="중복 확인" />
 
-    <EditText
-        android:id="@+id/et_passconfirm"
-        android:layout_width="366dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="비밀번호 확인"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/et_password"
-        app:layout_constraintStart_toStartOf="@+id/et_password"
-        app:layout_constraintTop_toBottomOf="@+id/et_password" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/et_nickname"
+            android:layout_width="366dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:hint="닉네임"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="@+id/et_passconfirm"
+            app:layout_constraintStart_toStartOf="@+id/et_passconfirm"
+            app:layout_constraintTop_toBottomOf="@+id/et_passconfirm" />
+
+        <Button
+            android:id="@+id/btn_confirm_nickname"
+            android:layout_width="96dp"
+            android:layout_height="42dp"
+            android:text="중복 확인"/>
+
+    </LinearLayout>
 
     <EditText
         android:id="@+id/et_password"
         android:layout_width="366dp"
         android:layout_height="45dp"
-        android:layout_marginTop="16dp"
         android:ems="10"
         android:hint="비밀번호"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="@+id/et_id"
-        app:layout_constraintStart_toStartOf="@+id/et_id"
-        app:layout_constraintTop_toBottomOf="@+id/et_id" />
+        android:inputType="textPersonName" />
 
-    <CheckBox
-        android:id="@+id/checkBox7"
-        android:layout_width="109dp"
-        android:layout_height="52dp"
-        android:text="이메일     수신 동의"
-        android:textSize="16sp"
-        tools:layout_editor_absoluteX="280dp"
-        tools:layout_editor_absoluteY="512dp"
-        tools:ignore="MissingConstraints" />
+    <EditText
+        android:id="@+id/et_passconfirm"
+        android:layout_width="366dp"
+        android:layout_height="45dp"
+        android:ems="10"
+        android:hint="비밀번호 확인"
+        android:inputType="textPersonName"/>
 
-    <CheckBox
-        android:id="@+id/checkBox8"
-        android:layout_width="109dp"
-        android:layout_height="52dp"
-        android:text="개인정보 취급 동의"
-        android:textSize="16sp"
-        tools:layout_editor_absoluteX="152dp"
-        tools:layout_editor_absoluteY="512dp"
-        tools:ignore="MissingConstraints" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
 
-    <CheckBox
-        android:id="@+id/checkBox4"
-        android:layout_width="109dp"
-        android:layout_height="52dp"
-        android:text="이용약관 동의"
-        android:textSize="16sp"
-        tools:layout_editor_absoluteX="23dp"
-        tools:layout_editor_absoluteY="512dp"
-        tools:ignore="MissingConstraints" />
+        <EditText
+            android:id="@+id/et_phone"
+            android:layout_width="366dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:hint="전화번호"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="@+id/et_nickname"
+            app:layout_constraintStart_toStartOf="@+id/et_nickname"
+            app:layout_constraintTop_toBottomOf="@+id/et_nickname" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <CheckBox
+            android:id="@+id/checkBox_email"
+            android:layout_width="109dp"
+            android:layout_height="52dp"
+            android:text="이메일     수신 동의"
+            android:textSize="16sp"/>
+
+        <CheckBox
+            android:id="@+id/checkBox_userinfo"
+            android:layout_width="109dp"
+            android:layout_height="52dp"
+            android:text="개인정보 취급 동의"
+            android:textSize="16sp" />
+
+        <CheckBox
+            android:id="@+id/checkBox_agree"
+            android:layout_width="109dp"
+            android:layout_height="52dp"
+            android:text="이용약관 동의"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원가입"/>
+
+
+</LinearLayout>
