@@ -2,23 +2,22 @@ package com.kusitms.kusitmsmarket;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class marketList {
+public class StoreList {
     @SerializedName("data")
-    public List<marketData> data = null;
+    public List<StoreData> data = null;
 
     @SerializedName("data")
-    public List<marketData> getData() {
+    public List<StoreData> getData() {
         return data;
     }
 
     @SerializedName("data")
-    public void setData(List<marketData> data) {
+    public void setData(List<StoreData> data) {
         this.data = data;
     }
-    public class marketData {
+    public class StoreData {
 
         @SerializedName("storeName")
         private String storeName;
@@ -35,8 +34,8 @@ public class marketList {
         @SerializedName("userName")
         private String userName;
 
-        public marketData(String storeName, String storeAddress, String storePhone, String storeCategory,
-                          String marketName, boolean storeGiftcard, String userName) {
+        public StoreData(String storeName, String storeAddress, String storePhone, String storeCategory,
+                         String marketName, boolean storeGiftcard, String userName) {
             this.storeName = storeName;
             this.storeAddress = storeAddress;
             this.storePhone = storePhone;
