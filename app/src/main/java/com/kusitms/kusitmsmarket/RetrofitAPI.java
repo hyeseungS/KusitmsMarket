@@ -23,11 +23,17 @@ public interface RetrofitAPI {
     @GET("/market/filter2/small")
     Call<MarketList> getSmallMarketData();
 
+    @GET("/market/getOne")
+    Call<MarketList> getSearchMarketData(@Query("name") String name);
+
     @GET("/store/getOne")
     Call<StoreList> getSearchStoreData(@Query("name") String name);
     
     @GET("/market")
     Call<MarketList> getMarketData();
+
+    @GET("/store")
+    Call<StoreList> getStoreData();
 
     @GET("/")
     Call<MarketList> getAll();

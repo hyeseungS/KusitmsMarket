@@ -16,16 +16,35 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
-        <SearchView
+        <LinearLayout
             android:id="@+id/search"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_alignParentTop="true"
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/search_background"
-            app:queryHint="검색"
-            android:padding="10dp" />
+            android:weightSum="2">
+
+            <SearchView
+                android:id="@+id/searchMarket"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:background="@drawable/search_background"
+                android:padding="10dp"
+                app:queryHint="시장 검색" />
+
+            <SearchView
+                android:id="@+id/searchStore"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/search_background"
+                android:padding="10dp"
+                app:queryHint="점포 검색" />
+        </LinearLayout>
 
 
         <LinearLayout

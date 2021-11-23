@@ -23,10 +23,13 @@ public class MarketList {
         private String marketName;
         @SerializedName("storeCnt")
         private int storeCnt;
+        @SerializedName("marketAddress")
+        private String marketAddress;
 
-        public MarketData(String marketName, int storeCnt) {
+        public MarketData(String marketName, int storeCnt, String marketAddress) {
             this.marketName = marketName;
             this.storeCnt = storeCnt;
+            this.marketAddress= marketAddress;
         }
 
         public String getMarketName() {
@@ -43,6 +46,12 @@ public class MarketList {
 
         public void setStoreCnt(int storeCnt) {
             this.storeCnt = storeCnt;
+        }
+
+        public String getMarketAddress() { return marketAddress; }
+
+        public void setMarketAddress(int storeCnt) {
+            this.marketAddress = marketAddress;
         }
     }
 }
