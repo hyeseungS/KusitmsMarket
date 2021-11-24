@@ -98,6 +98,7 @@
         android:orientation="vertical">
 
         <Button
+            android:id="@+id/btn_mypage_user_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -168,6 +169,7 @@
 
 
         <Button
+            android:id="@+id/btn_mypage_center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
