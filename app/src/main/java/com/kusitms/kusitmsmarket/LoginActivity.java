@@ -64,8 +64,15 @@ public class LoginActivity extends AppCompatActivity {
                             UserToken userToken = response.body();
                             token = userToken.getToken();
                             System.out.println("토큰 : " + token + "이 저장되었습니다.");
+
+
+                            Bundle bundle = new Bundle();
+                            bundle.putString("userToken", token);
+                            intentMainActivity.putExtras(bundle);
+
                             intentMainActivity.putExtra("user_token", token);
                             startActivity(intentMainActivity);
+
                         } else {
                             Log.e("연결이 비정상적 : ", "error code : " + response.code());
                         }

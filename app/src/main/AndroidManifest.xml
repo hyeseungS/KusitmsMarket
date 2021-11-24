@@ -15,12 +15,20 @@
         android:theme="@style/Theme.KusitmsMarket.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.mypage.CenterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.mypage.UserInfoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.mypage.NoticeActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.mypage.ReportActivity"
             android:exported="true" />
         <activity
             android:name=".ui.mypage.ReportLocationActivity"
             android:exported="true" />
-
         <activity
             android:name=".LoginActivity"
             android:exported="true"
@@ -31,13 +39,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".MainActivity"
-            android:exported="true" />
-
         <activity
             android:name=".RegisterActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true" />
 
         <meta-data

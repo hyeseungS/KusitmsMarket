@@ -17,6 +17,7 @@ public class MarketList {
     public void setData(List<MarketData> data) {
         this.data = data;
     }
+
     public class MarketData {
 
         @SerializedName("marketName")

@@ -53,7 +53,24 @@
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/layout/viewpager_image.xml" value="0.1" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/menu/bottom_nav_menu.xml" value="0.17708333333333334" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/menu/main.xml" value="0.13385416666666666" />
+        <entry key="..\:/kusitmsClient/KusitmsMarket/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.215625" />
+        <entry key="..\:/kusitmsClient/KusitmsMarket/app/src/main/res/layout/activity_center.xml" value="0.14666666666666667" />
+        <entry key="..\:/kusitmsClient/KusitmsMarket/app/src/main/res/layout/activity_main.xml" value="0.19791666666666666" />
+        <entry key="..\:/kusitmsClient/KusitmsMarket/app/src/main/res/layout/activity_notice.xml" value="0.13333333333333333" />
+        <entry key="..\:/kusitmsClient/KusitmsMarket/app/src/main/res/layout/activity_report.xml" value="0.19947916666666668" />
+        <entry key="..\:/kusitmsClient/KusitmsMarket/app/src/main/res/layout/activity_report_location.xml" value="0.19947916666666668" />
         <entry key="..\:/kusitmsClient/KusitmsMarket/app/src/main/res/layout/activity_resgister.xml" value="0.25" />
+        <entry key="..\:/kusitmsClient/KusitmsMarket/app/src/main/res/layout/activity_user_info.xml" value="0.22" />
+        <entry key="..\:/kusitmsClient/KusitmsMarket/app/src/main/res/layout/edit_dialog.xml" value="0.19947916666666668" />
+        <entry key="..\:/kusitmsClient/KusitmsMarket/app/src/main/res/layout/fragment_home.xml" value="0.19947916666666668" />
+        <entry key="..\:/kusitmsClient/KusitmsMarket/app/src/main/res/layout/fragment_market.xml" value="0.19947916666666668" />
+        <entry key="..\:/kusitmsClient/KusitmsMarket/app/src/main/res/layout/fragment_market_detail.xml" value="0.19947916666666668" />
+        <entry key="..\:/kusitmsClient/KusitmsMarket/app/src/main/res/layout/fragment_mypage.xml" value="0.16666666666666666" />
+        <entry key="..\:/kusitmsClient/KusitmsMarket/app/src/main/res/layout/fragment_price.xml" value="0.19947916666666668" />
+        <entry key="..\:/kusitmsClient/KusitmsMarket/app/src/main/res/layout/item_center.xml" value="0.1" />
+        <entry key="..\:/kusitmsClient/KusitmsMarket/app/src/main/res/layout/item_notice.xml" value="0.16666666666666666" />
+        <entry key="..\:/kusitmsClient/KusitmsMarket/app/src/main/res/layout/listview_item.xml" value="0.1" />
+        <entry key="..\:/kusitmsClient/KusitmsMarket/app/src/main/res/layout/recyclerview_mymarket.xml" value="0.19947916666666668" />
         <entry key="..\:/kusitmsClient/KusitmsMarket/app/src/main/res/layout/start_window_login.xml" value="0.1" />
       </map>
     </option>
