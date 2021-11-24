@@ -5,9 +5,12 @@ import com.kusitms.kusitmsmarket.request.SignUpRequest;
 import com.kusitms.kusitmsmarket.response.SignUpResponse;
 import com.kusitms.kusitmsmarket.response.UserToken;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Header;
 import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
@@ -59,4 +62,10 @@ public interface RetrofitAPI {
 
     @POST("/api/signup")
     Call<SignUpResponse> postSingUp(@Body SignUpRequest request);
+
+    @GET("/api/store/like")
+    Call<StoreList> getStoreLike(@Header("X-AUTH-TOKEN") String token);
+
+    @GET("/eventImage/pay")
+    Call<EventImage> getEventImage();
 }

@@ -2,6 +2,7 @@ package com.kusitms.kusitmsmarket;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private NavController navController;
     public static Context mContext;
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        Intent intent = getIntent();
+        token = intent.getStringExtra("user_token");
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Status Bar 높이만큼 Padding 부여
@@ -48,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
 
         mContext = this;
 
+    }
+
+    public String getUserToken() {
+        return token;
     }
 
     //status bar의 높이 계산
