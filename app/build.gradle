@@ -52,4 +52,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     // Json Parser
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+
+    // circle image view
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
 }

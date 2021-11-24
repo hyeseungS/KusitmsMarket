@@ -25,6 +25,8 @@ public class MyPageFragment extends Fragment {
     private MyPageViewModel myPageViewModel;
     private FragmentMypageBinding binding;
 
+    Button btnNotice;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         myPageViewModel =
@@ -33,12 +35,23 @@ public class MyPageFragment extends Fragment {
         binding = FragmentMypageBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+
         Button reportButton = (Button) root.findViewById(R.id.report_btn);
         reportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), ReportLocationActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        // 공지사항 눌렀을 떄
+        btnNotice = root.findViewById(R.id.btn_notice);
+        btnNotice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentNoticeActivity = new Intent(getActivity(), NoticeActivity.class);
+                startActivity(intentNoticeActivity);
             }
         });
 

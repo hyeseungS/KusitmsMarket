@@ -2,8 +2,11 @@ package com.kusitms.kusitmsmarket;
 
 import com.kusitms.kusitmsmarket.request.LoginRequest;
 import com.kusitms.kusitmsmarket.request.SignUpRequest;
+import com.kusitms.kusitmsmarket.response.NoticeResponse;
 import com.kusitms.kusitmsmarket.response.SignUpResponse;
 import com.kusitms.kusitmsmarket.response.UserToken;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -57,6 +60,12 @@ public interface RetrofitAPI {
     @GET("/api/check-duplicate/nickname/{nickname}")
     Call<String> getValidateNickname(@Path("nickname") String nickname);
 
+    // 회원가입
     @POST("/api/signup")
     Call<SignUpResponse> postSingUp(@Body SignUpRequest request);
+
+
+    // 마이페이지
+    @GET("/mypage/notice")
+    Call<List<NoticeResponse>> getNoticeData();
 }
