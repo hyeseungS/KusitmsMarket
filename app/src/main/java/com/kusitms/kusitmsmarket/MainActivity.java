@@ -24,20 +24,21 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private NavController navController;
     public static Context mContext;
+    private String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent intent = getIntent();
-        Bundle bundle = intent.getExtras();
-        String mainUserToken = bundle.getString("userToken");
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        Intent intent = getIntent();
+        token = intent.getStringExtra("user_token");
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         // Status Bar 높이만큼 Padding 부여
         toolbar.setPadding(0, getStatusBarHeight(), 0, 0);
 
@@ -53,6 +54,10 @@ public class MainActivity extends AppCompatActivity {
 
         mContext = this;
 
+    }
+
+    public String getUserToken() {
+        return token;
     }
 
     //status bar의 높이 계산

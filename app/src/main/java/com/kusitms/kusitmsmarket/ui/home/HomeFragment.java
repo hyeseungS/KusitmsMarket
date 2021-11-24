@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
+import android.media.metrics.Event;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -21,10 +22,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager2.widget.ViewPager2;
 
+import com.kusitms.kusitmsmarket.EventImage;
+import com.kusitms.kusitmsmarket.MainActivity;
 import com.kusitms.kusitmsmarket.MarketList;
 import com.kusitms.kusitmsmarket.R;
 import com.kusitms.kusitmsmarket.RetrofitClient;
+import com.kusitms.kusitmsmarket.ViewPagerAdapter;
 import com.kusitms.kusitmsmarket.databinding.FragmentHomeBinding;
 import com.kusitms.kusitmsmarket.StoreList;
 import com.naver.maps.geometry.LatLng;
@@ -40,6 +46,7 @@ import com.naver.maps.map.overlay.OverlayImage;
 import com.naver.maps.map.util.FusedLocationSource;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -117,10 +124,10 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                             List<Address> addressList = null;
                             try {
                                 // 받아온 주소를 지오 코딩을 이용해 변환
-                                if(dataList.get(0).getMarketAddress() != null)
-                                addressList = geocoder.getFromLocationName(
-                                        dataList.get(0).getMarketAddress(), // 주소
-                                        1); // 최대 검색 결과 개수
+                                if (dataList.get(0).getMarketAddress() != null)
+                                    addressList = geocoder.getFromLocationName(
+                                            dataList.get(0).getMarketAddress(), // 주소
+                                            1); // 최대 검색 결과 개수
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -170,10 +177,10 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                             List<Address> addressList = null;
                             try {
                                 // 받아온 주소를 지오 코딩을 이용해 변환
-                                if(dataList.get(0).getStoreAddress() != null)
-                                addressList = geocoder.getFromLocationName(
-                                        dataList.get(0).getStoreAddress(), // 주소
-                                        1); // 최대 검색 결과 개수
+                                if (dataList.get(0).getStoreAddress() != null)
+                                    addressList = geocoder.getFromLocationName(
+                                            dataList.get(0).getStoreAddress(), // 주소
+                                            1); // 최대 검색 결과 개수
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -231,10 +238,10 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                                     List<Address> addressList = null;
                                     try {
                                         // 받아온 주소를 지오 코딩을 이용해 변환
-                                        if(data.getMarketAddress() != null)
-                                        addressList = geocoder.getFromLocationName(
-                                                data.getMarketAddress(), // 주소
-                                                1); // 최대 검색 결과 개수
+                                        if (data.getMarketAddress() != null)
+                                            addressList = geocoder.getFromLocationName(
+                                                    data.getMarketAddress(), // 주소
+                                                    1); // 최대 검색 결과 개수
                                     } catch (IOException e) {
                                         e.printStackTrace();
                                     }
@@ -275,10 +282,10 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                                     List<Address> addressList = null;
                                     try {
                                         // 받아온 주소를 지오 코딩을 이용해 변환
-                                        if(data.getMarketAddress() != null)
-                                        addressList = geocoder.getFromLocationName(
-                                                data.getMarketAddress(), // 주소
-                                                1); // 최대 검색 결과 개수
+                                        if (data.getMarketAddress() != null)
+                                            addressList = geocoder.getFromLocationName(
+                                                    data.getMarketAddress(), // 주소
+                                                    1); // 최대 검색 결과 개수
                                     } catch (IOException e) {
                                         e.printStackTrace();
                                     }
@@ -306,6 +313,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                         mNaverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
                         break;
                     case R.id.small_radioBtn:
+                        freeActiveMarkers();
                         RetrofitClient.getAPIService().getSmallMarketData().enqueue(new Callback<MarketList>() {
                             @Override
                             public void onResponse(Call<MarketList> call, Response<MarketList> response) {
@@ -318,10 +326,10 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                                     List<Address> addressList = null;
                                     try {
                                         // 받아온 주소를 지오 코딩을 이용해 변환
-                                        if(data.getMarketAddress() != null)
-                                        addressList = geocoder.getFromLocationName(
-                                                data.getMarketAddress(), // 주소
-                                                1); // 최대 검색 결과 개수
+                                        if (data.getMarketAddress() != null)
+                                            addressList = geocoder.getFromLocationName(
+                                                    data.getMarketAddress(), // 주소
+                                                    1); // 최대 검색 결과 개수
                                     } catch (IOException e) {
                                         e.printStackTrace();
                                     }
@@ -371,10 +379,10 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                                     List<Address> addressList = null;
                                     try {
                                         // 받아온 주소를 지오 코딩을 이용해 변환
-                                        if(data.getStoreAddress() != null)
-                                        addressList = geocoder.getFromLocationName(
-                                                data.getStoreAddress(), // 주소
-                                                1); // 최대 검색 결과 개수
+                                        if (data.getStoreAddress() != null)
+                                            addressList = geocoder.getFromLocationName(
+                                                    data.getStoreAddress(), // 주소
+                                                    1); // 최대 검색 결과 개수
                                     } catch (IOException e) {
                                         e.printStackTrace();
                                     }
@@ -415,10 +423,10 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                                     List<Address> addressList = null;
                                     try {
                                         // 받아온 주소를 지오 코딩을 이용해 변환
-                                        if(data.getMarketAddress() != null)
-                                        addressList = geocoder.getFromLocationName(
-                                                data.getMarketAddress(), // 주소
-                                                1); // 최대 검색 결과 개수
+                                        if (data.getMarketAddress() != null)
+                                            addressList = geocoder.getFromLocationName(
+                                                    data.getMarketAddress(), // 주소
+                                                    1); // 최대 검색 결과 개수
                                     } catch (IOException e) {
                                         e.printStackTrace();
                                     }
@@ -459,10 +467,10 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                                     List<Address> addressList = null;
                                     try {
                                         // 받아온 주소를 지오 코딩을 이용해 변환
-                                        if(data.getMarketAddress() != null)
-                                        addressList = geocoder.getFromLocationName(
-                                                data.getMarketAddress(), // 주소
-                                                1); // 최대 검색 결과 개수
+                                        if (data.getMarketAddress() != null)
+                                            addressList = geocoder.getFromLocationName(
+                                                    data.getMarketAddress(), // 주소
+                                                    1); // 최대 검색 결과 개수
                                     } catch (IOException e) {
                                         e.printStackTrace();
                                     }
@@ -499,18 +507,122 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onClick(View v) {
                 freeActiveMarkers();
+                RetrofitClient.getAPIService().getMarketData().enqueue(new Callback<MarketList>() {
+                    @Override
+                    public void onResponse(Call<MarketList> call, Response<MarketList> response) {
+                        Log.d("TAG", response.code() + "");
 
+                        MarketList resource = response.body();
+                        List<MarketList.MarketData> dataList = resource.data;
+
+                        for (MarketList.MarketData data : dataList) {
+                            List<Address> addressList = null;
+                            try {
+                                // 받아온 주소를 지오 코딩을 이용해 변환
+                                if (data.getMarketAddress() != null)
+                                    addressList = geocoder.getFromLocationName(
+                                            data.getMarketAddress(), // 주소
+                                            1); // 최대 검색 결과 개수
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            if (addressList != null && addressList.size() != 0) {
+                                double latitude = addressList.get(0).getLatitude();
+                                double longitude = addressList.get(0).getLongitude();
+
+                                // 좌표(위도, 경도) 생성
+                                LatLng point = new LatLng(latitude, longitude);
+                                markersPosition.add(point);
+                            }
+                        }
+
+                        Log.d("test", "성공");
+                    }
+
+
+                    @Override
+                    public void onFailure(Call<MarketList> call, Throwable t) {
+                        Log.d("test", "실패");
+                        t.printStackTrace();
+                    }
+                });
                 mNaverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
             }
+
         });
 
         ImageButton bookmarkButton = (ImageButton) root.findViewById(R.id.bookmark);
-        bookmarkButton.setOnClickListener((new View.OnClickListener() {
+        bookmarkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                freeActiveMarkers();
+                RetrofitClient.getAPIService().getStoreLike(((MainActivity) getActivity()).getUserToken()).enqueue(new Callback<StoreList>() {
+                    @Override
+                    public void onResponse(Call<StoreList> call, Response<StoreList> response) {
+                        Log.d("TAG", response.code() + "");
 
+                        StoreList resource = response.body();
+                        List<StoreList.StoreData> dataList = resource.data;
+
+                        for (StoreList.StoreData data : dataList) {
+                            List<Address> addressList = null;
+                            try {
+                                // 받아온 주소를 지오 코딩을 이용해 변환
+                                if (data.getStoreAddress() != null)
+                                    addressList = geocoder.getFromLocationName(
+                                            data.getStoreAddress(), // 주소
+                                            1); // 최대 검색 결과 개수
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                            if (addressList != null && addressList.size() != 0) {
+                                double latitude = addressList.get(0).getLatitude();
+                                double longitude = addressList.get(0).getLongitude();
+
+                                // 좌표(위도, 경도) 생성
+                                LatLng point = new LatLng(latitude, longitude);
+                                markersPosition.add(point);
+                            }
+                        }
+
+                        Log.d("test", "성공");
+                    }
+
+
+                    @Override
+                    public void onFailure(Call<StoreList> call, Throwable t) {
+                        Log.d("test", "실패");
+                        t.printStackTrace();
+                    }
+                });
             }
-        }));
+        });
+
+        RetrofitClient.getAPIService().getEventImage().enqueue(new Callback<EventImage>() {
+            @Override
+            public void onResponse(Call<EventImage> call, Response<EventImage> response) {
+                Log.d("TAG", response.code() + "");
+
+                if (response.isSuccessful() && response.body() != null) {
+                    EventImage resource = response.body();
+                    List<String> img = resource.data;
+                    ViewPager2 viewpager = (ViewPager2) root.findViewById(R.id.event_image);
+
+                    viewpager.setOffscreenPageLimit(1);
+                    viewpager.setAdapter(new ViewPagerAdapter(getContext(), img));
+                    Log.d("test", "성공");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<EventImage> call, Throwable t) {
+                Log.d("test", "실패");
+                t.printStackTrace();
+            }
+
+        });
 
         return root;
 
@@ -581,10 +693,10 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                     List<Address> addressList = null;
                     try {
                         // 받아온 주소를 지오 코딩을 이용해 변환
-                        if(data.getMarketAddress() != null)
-                        addressList = geocoder.getFromLocationName(
-                                data.getMarketAddress(), // 주소
-                                1); // 최대 검색 결과 개수
+                        if (data.getMarketAddress() != null)
+                            addressList = geocoder.getFromLocationName(
+                                    data.getMarketAddress(), // 주소
+                                    1); // 최대 검색 결과 개수
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
@@ -659,7 +771,8 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         // request code와 권한획득 여부 확인

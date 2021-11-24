@@ -96,4 +96,9 @@ public interface RetrofitAPI {
     @GET("/mypage/question")
     Call<List<QuestionResponse>> getQuestion();
 
+    @GET("/api/store/like")
+    Call<StoreList> getStoreLike(@Header("X-AUTH-TOKEN") String token);
+
+    @GET("/eventImage/pay")
+    Call<EventImage> getEventImage();
 }

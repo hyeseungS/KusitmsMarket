@@ -1,6 +1,8 @@
 package com.kusitms.kusitmsmarket.ui.market;
 
+import android.location.Address;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,12 +15,24 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.kusitms.kusitmsmarket.MainActivity;
 import com.kusitms.kusitmsmarket.MarketItem;
+import com.kusitms.kusitmsmarket.MarketList;
 import com.kusitms.kusitmsmarket.MarketRecyclerAdapter;
 import com.kusitms.kusitmsmarket.R;
+import com.kusitms.kusitmsmarket.RetrofitClient;
+import com.kusitms.kusitmsmarket.StoreList;
 import com.kusitms.kusitmsmarket.databinding.FragmentMarketBinding;
+import com.naver.maps.geometry.LatLng;
+import com.naver.maps.map.CameraUpdate;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MarketFragment extends Fragment {
 
@@ -50,13 +64,33 @@ public class MarketFragment extends Fragment {
         mRecyclerView.setAdapter(mRecyclerAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        /* adapt data */
         ArrayList<MarketItem> mMarketItems = new ArrayList<>();
-        for (int i = 1; i <= 10; i++) {
-            mMarketItems.add(new MarketItem(i, i + "번째 식당"));
-        }
-        mRecyclerAdapter.setFriendList(mMarketItems);
+        String token = ((MainActivity) getActivity()).getUserToken();
+        RetrofitClient.getAPIService().getStoreLike(token).enqueue(new Callback<StoreList>() {
+            @Override
+            public void onResponse(Call<StoreList> call, Response<StoreList> response) {
+                Log.d("TAG", response.code() + "");
 
+                if (response.isSuccessful() && response.body() != null) {
+                    StoreList resource = response.body();
+                    List<StoreList.StoreData> dataList = resource.data;
+                    int i=1;
+                    for (StoreList.StoreData data : dataList) {
+                        mMarketItems.add(new MarketItem(i++, data.getStoreName()));
+                    }
+                    Log.d("test", "성공");
+                }
+                mRecyclerAdapter.setFriendList(mMarketItems);
+            }
+
+            @Override
+            public void onFailure(Call<StoreList> call, Throwable t) {
+                Log.d("test", "실패");
+                t.printStackTrace();
+            }
+        });
+
+        mRecyclerAdapter.setFriendList(mMarketItems);
 
         LinearLayout linearLayout = (LinearLayout) root.findViewById(R.id.myMarketLayout);
         linearLayout.setPadding(0, getStatusBarHeight(), 0, 0);

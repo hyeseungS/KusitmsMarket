@@ -57,7 +57,7 @@ public class UserInfoActivity extends AppCompatActivity {
         // 먼저 사용자 정보 저장하고 띄어주기
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
-        token = bundle.getString("userToken");
+        token = bundle.getString("user_token");
 
         Call<UserInfoResponse> callUser = RetrofitClient.getAPIService().getUserInfoData(token);
 

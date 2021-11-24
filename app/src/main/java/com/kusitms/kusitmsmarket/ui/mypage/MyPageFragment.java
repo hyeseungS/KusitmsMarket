@@ -59,7 +59,7 @@ public class MyPageFragment extends Fragment {
         // 먼저 사용자 정보 저장하고 띄어주기
         Intent intent = getActivity().getIntent();
         Bundle bundle = intent.getExtras();
-        token = bundle.getString("userToken");
+        token = bundle.getString("user_token");
 
         Call<UserInfoResponse> callUser = RetrofitClient.getAPIService().getUserInfoData(token);
 
@@ -120,13 +120,13 @@ public class MyPageFragment extends Fragment {
                 // 토큰 받는 과정
                 Intent mainActivityIntent = getActivity().getIntent();
                 Bundle getBundle = mainActivityIntent.getExtras();
-                String token = getBundle.getString("userToken");
+                String token = getBundle.getString("user_token");
 
                 System.out.println("in fragment : " + token);
 
                 // 토큰 보내는 과정
                 Bundle sendBundle = new Bundle();
-                sendBundle.putString("userToken", token);
+                sendBundle.putString("user_token", token);
                 intentUserInfo.putExtras(sendBundle);
 
                 startActivity(intentUserInfo);
