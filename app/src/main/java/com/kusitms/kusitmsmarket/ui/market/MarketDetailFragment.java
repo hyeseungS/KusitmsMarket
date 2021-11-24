@@ -39,6 +39,8 @@ public class MarketDetailFragment extends Fragment implements View.OnClickListen
         binding = FragmentMarketDetailBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
+        TextView store = (TextView) root.findViewById(R.id.store);
+        store.setText(storeName);
         TextView address = (TextView) root.findViewById(R.id.address);
         TextView time = (TextView) root.findViewById(R.id.time);
         TextView link = (TextView) root.findViewById(R.id.link);
@@ -53,6 +55,7 @@ public class MarketDetailFragment extends Fragment implements View.OnClickListen
         TextView firstUserName = (TextView) root.findViewById(R.id.firstUserName);
         TextView personalScore = (TextView) root.findViewById(R.id.personalScore);
         TextView reviewContent = (TextView) root.findViewById(R.id.reviewContent);
+
 
         RetrofitClient.getAPIService().getSearchStoreData(storeName).enqueue(new Callback<StoreList>() {
             @Override

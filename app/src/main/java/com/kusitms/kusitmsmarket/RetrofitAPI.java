@@ -9,6 +9,8 @@ import com.kusitms.kusitmsmarket.response.SignUpResponse;
 import com.kusitms.kusitmsmarket.response.UserInfoResponse;
 import com.kusitms.kusitmsmarket.response.UserToken;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;

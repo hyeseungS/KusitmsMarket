@@ -13,12 +13,43 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+        <TextView
+            android:id="@+id/store"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="100dp"
+            android:gravity="center"
+            android:text="정보 없음"
+            android:paddingLeft="30dp"
+            android:textStyle="bold"
+            android:textColor="#FF5E00"
+            android:textSize="24sp" />
+
+            <ImageButton
+                android:id="@+id/share"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/ic_share"/>
+
+            <ImageButton
+                android:id="@+id/heart"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/ic_favorite_border"/>
+
+    </LinearLayout>
         <LinearLayout
             android:id="@+id/layout1"
             android:layout_width="match_parent"
@@ -168,7 +199,7 @@
             android:id="@+id/image_review"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:weightSum="3">
 
@@ -210,7 +241,6 @@
             android:id="@+id/layout7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -234,14 +264,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
-                android:layout_marginLeft="30dp" />
+                android:layout_marginLeft="10dp" />
 
             <TextView
                 android:id="@+id/totalScore"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="0.0"
+                android:text="(0.0)"
+                android:textColor="@color/black"
                 android:textSize="13sp" />
 
             <View
@@ -260,15 +291,15 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:paddingBottom="10dp"
+            android:paddingHorizontal="10dp"
             android:layout_margin="5dp"
             android:orientation="vertical"
-            android:elevation="3dp">
+            android:elevation="5dp">
         <LinearLayout
             android:id="@+id/layout8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
@@ -292,7 +323,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="10dp"
-                android:layout_marginLeft="30dp" />
+                android:layout_marginLeft="10dp" />
 
             <TextView
                 android:id="@+id/personalScore"
