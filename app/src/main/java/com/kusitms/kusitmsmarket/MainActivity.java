@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         token = intent.getStringExtra("user_token");
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Status Bar 높이만큼 Padding 부여

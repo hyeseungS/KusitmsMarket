@@ -12,6 +12,7 @@
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/drawable/ic_east.xml" value="0.1814814814814815" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/drawable/ic_favorite.xml" value="0.11388888888888889" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/drawable/ic_favorite_black_24dp.xml" value="0.17760416666666667" />
+        <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/drawable/ic_favorite_border.xml" value="0.19322916666666667" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/drawable/ic_filter.xml" value="0.19025641025641027" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/drawable/ic_image.xml" value="0.17760416666666667" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/drawable/ic_link.xml" value="0.17760416666666667" />
@@ -26,6 +27,7 @@
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/drawable/ic_person.xml" value="0.1814814814814815" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/drawable/ic_phone.xml" value="0.17760416666666667" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/drawable/ic_review.xml" value="0.17760416666666667" />
+        <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/drawable/ic_share.xml" value="0.19322916666666667" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/drawable/ic_time.xml" value="0.17760416666666667" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/drawable/location_buttom.xml" value="0.19025641025641027" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/drawable/location_button.xml" value="0.19025641025641027" />
@@ -41,7 +43,7 @@
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/layout/fragment_dashboard.xml" value="0.10144927536231885" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/layout/fragment_home.xml" value="0.13333333333333333" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/layout/fragment_market.xml" value="0.1" />
-        <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/layout/fragment_market_detail.xml" value="0.1" />
+        <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/layout/fragment_market_detail.xml" value="0.22" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/layout/fragment_mypage.xml" value="0.10144927536231885" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/layout/fragment_price.xml" value="0.10144927536231885" />
         <entry key="..\:/Users/shinh/AndroidStudioProjects2/KusitmsMarket/app/src/main/res/layout/fragment_report.xml" value="0.15443840579710144" />

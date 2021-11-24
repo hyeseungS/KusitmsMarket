@@ -38,7 +38,6 @@ public class MarketFragment extends Fragment {
 
     private MarketViewModel marketViewModel;
     private FragmentMarketBinding binding;
-    static final String[] LIST_MENU = {"다은이네 호떡", "미경이네 떡볶이", "서영이네 사과 농장", "의찬이 노래교실", "준이네 카페"};
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {

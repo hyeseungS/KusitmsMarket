@@ -1,5 +1,9 @@
 package com.kusitms.kusitmsmarket;
 
+import android.content.Intent;
+import android.location.Address;
+import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,7 +12,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.kusitms.kusitmsmarket.ui.market.MarketDetailFragment;
+import com.naver.maps.geometry.LatLng;
+import com.naver.maps.map.CameraUpdate;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MarketRecyclerAdapter extends RecyclerView.Adapter<MarketRecyclerAdapter.ViewHolder> {
 
@@ -52,6 +66,8 @@ public class MarketRecyclerAdapter extends RecyclerView.Adapter<MarketRecyclerAd
         }
         @Override
         public void onClick(View view) {
+            //프레그먼트끼리 Store data 넘기기 위한 bundle
+            MarketDetailFragment.setStoreName(name.getText().toString());
             ((MainActivity)MainActivity.mContext).moveToDetail();
         }
     }
