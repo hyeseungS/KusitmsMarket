@@ -44,20 +44,32 @@
             android:orientation="vertical">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="점포 위치 등록"
+                android:layout_marginVertical="20dp"
+                android:textColor="#6D3805"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="20dp"
-                android:text="점포 위치 등록"
-                android:textSize="24sp" />
-
+                android:paddingVertical="10dp"
+                android:background="@drawable/white_layout"
+                android:gravity="center">
             <TextView
                 android:id="@+id/reportLocation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:gravity="center"
                 android:text="주소"
-                android:textSize="24sp" />
+                android:gravity="center"
+                android:textColor="#37474F"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            </LinearLayout>
 
             <Button
                 android:id="@+id/location_setting_btn"

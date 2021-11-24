@@ -9,6 +9,8 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -17,10 +19,13 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.kusitms.kusitmsmarket.MainActivity;
 import com.kusitms.kusitmsmarket.R;
 import com.naver.maps.geometry.LatLng;
+import com.naver.maps.map.CameraPosition;
 import com.naver.maps.map.LocationTrackingMode;
 import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
@@ -30,6 +35,9 @@ import com.naver.maps.map.overlay.Marker;
 import com.naver.maps.map.overlay.Overlay;
 import com.naver.maps.map.overlay.OverlayImage;
 import com.naver.maps.map.util.FusedLocationSource;
+
+import java.io.IOException;
+import java.util.List;
 
 public class ReportLocationActivity extends AppCompatActivity implements OnMapReadyCallback {
 
@@ -42,11 +50,17 @@ public class ReportLocationActivity extends AppCompatActivity implements OnMapRe
     private FusedLocationSource mLocationSource;
     private NaverMap mNaverMap;
     private MapView mapView;
+    private Geocoder geocoder;
+    private TextView addressView;
+    private String address;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report_location);
 
+
+        addressView = findViewById(R.id.reportLocation);
         RelativeLayout relativeLayout = findViewById(R.id.reportMapLayout);
         relativeLayout.setPadding(0, getStatusBarHeight(), 0, 0);
         // 지도 객체 생성
@@ -74,6 +88,7 @@ public class ReportLocationActivity extends AppCompatActivity implements OnMapRe
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ReportLocationActivity.this, ReportActivity.class);
+                intent.putExtra("address", address);
                 startActivity(intent);
             }
         });
@@ -94,6 +109,7 @@ public class ReportLocationActivity extends AppCompatActivity implements OnMapRe
         // NaverMap 객체 받아서 NaverMap 객체에 위치 소스 지정
         mNaverMap = naverMap;
         mNaverMap.setLocationSource(mLocationSource);
+        geocoder = new Geocoder(this);
 
         mNaverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
 
@@ -108,9 +124,48 @@ public class ReportLocationActivity extends AppCompatActivity implements OnMapRe
 //        LocationButtonView locationButtonView = root.findViewById(R.id.location);
 //        locationButtonView.setMap(mNaverMap);
 //        locationButtonView.setVisibility(View.GONE);
+        // 카메라 이동되면 호출되는 이벤트
+        naverMap.addOnCameraChangeListener(new NaverMap.OnCameraChangeListener() {
+
+            @Override
+            public void onCameraChange(int reason, boolean animated) {
+                marker.setMap(null);
+                // 정의된 마커위치들 중 가시거리 내에 있는 것들만 마커 생성
+                // 정의된 마커위치들중 가시거리 내에있는것들만 마커 생성
+                LatLng currentPosition = getCurrentPosition(naverMap);
+                marker.setPosition(currentPosition);
+                marker.setMap(naverMap);
+                List<Address> addressList=null;
+                try {
+                    addressList = geocoder.getFromLocation(currentPosition.latitude,currentPosition.longitude,10);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Log.d("test","입출력오류");
+                }
+                if(addressList!=null){
+                    if(addressList.size()==0){
+                        addressView.setText("주소찾기 오류");
+                        address = "";
+                    }else{
+                        Log.d("찾은 주소",addressList.get(0).toString());
+                        String cut[] = addressList.get(0).getAddressLine(0).split(" ");
+                        address = "";
+                        for(int i=1; i<cut.length; i++)
+                            address += cut[i] + " ";
+                        addressView.setText(address);
+                    }
+                }
+            }
+        });
 
         // 권한확인. 결과는 onRequestPermissionsResult 콜백 매서드 호출
         ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_REQUEST_CODE);
+    }
+
+    // 현재 카메라가 보고있는 위치
+    public LatLng getCurrentPosition(NaverMap naverMap) {
+        CameraPosition cameraPosition = naverMap.getCameraPosition();
+        return new LatLng(cameraPosition.target.latitude, cameraPosition.target.longitude);
     }
 
     //status bar의 높이 계산
