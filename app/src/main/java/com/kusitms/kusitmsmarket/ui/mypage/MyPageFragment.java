@@ -40,7 +40,7 @@ public class MyPageFragment extends Fragment {
     private MyPageViewModel myPageViewModel;
     private FragmentMypageBinding binding;
 
-    Button btnNotice, btnUserInfo, btnCenter;
+    Button btnNotice, btnUserInfo, btnCenter, btnReport;
     TextView tvNicknameMain;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -54,6 +54,7 @@ public class MyPageFragment extends Fragment {
         btnNotice = root.findViewById(R.id.btn_notice);
         btnUserInfo = root.findViewById(R.id.btn_mypage_user_info);
         btnCenter = root.findViewById(R.id.btn_mypage_center);
+        btnReport = root.findViewById(R.id.report_btn);
         tvNicknameMain = root.findViewById(R.id.nickname);
 
         // 먼저 사용자 정보 저장하고 띄어주기
@@ -134,11 +135,47 @@ public class MyPageFragment extends Fragment {
             }
         });
 
+        // 제보하기 버튼 눌렀을 때
+        btnReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentReportActivity = new Intent(getActivity(), ReportActivity.class);
+//
+//                // 토큰 받는 과정
+//                Intent mainActivityIntent = getActivity().getIntent();
+//                Bundle getBundle = mainActivityIntent.getExtras();
+//                String token = getBundle.getString("user_token");
+
+                System.out.println("in fragment : " + token);
+
+                // 토큰 보내는 과정
+                Bundle sendBundle = new Bundle();
+                sendBundle.putString("user_token", token);
+                intentReportActivity.putExtras(sendBundle);
+
+
+                startActivity(intentReportActivity);
+            }
+        });
+
         // 고객센터 버튼 눌렀을 때
         btnCenter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intentCenterActivity = new Intent(getActivity(), CenterActivity.class);
+
+                // 토큰 받는 과정
+                Intent mainActivityIntent = getActivity().getIntent();
+                Bundle getBundle = mainActivityIntent.getExtras();
+                String token = getBundle.getString("user_token");
+
+                System.out.println("in fragment : " + token);
+
+                // 토큰 보내는 과정
+                Bundle sendBundle = new Bundle();
+                sendBundle.putString("user_token", token);
+                intentCenterActivity.putExtras(sendBundle);
+
                 startActivity(intentCenterActivity);
             }
         });

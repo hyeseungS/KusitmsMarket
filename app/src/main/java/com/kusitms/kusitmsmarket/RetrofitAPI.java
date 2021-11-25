@@ -1,10 +1,12 @@
 package com.kusitms.kusitmsmarket;
 
 import com.kusitms.kusitmsmarket.request.LoginRequest;
+import com.kusitms.kusitmsmarket.request.ReportRequest;
 import com.kusitms.kusitmsmarket.request.SignUpRequest;
 import com.kusitms.kusitmsmarket.response.DeleteResponse;
 import com.kusitms.kusitmsmarket.response.NoticeResponse;
 import com.kusitms.kusitmsmarket.response.QuestionResponse;
+import com.kusitms.kusitmsmarket.response.ReportResponse;
 import com.kusitms.kusitmsmarket.response.SignUpResponse;
 import com.kusitms.kusitmsmarket.response.UserInfoResponse;
 import com.kusitms.kusitmsmarket.response.UserToken;
@@ -101,4 +103,10 @@ public interface RetrofitAPI {
 
     @GET("/eventImage/pay")
     Call<EventImage> getEventImage();
+
+    // 제보하기
+    @POST("/mypage/report-store")
+    Call<ReportResponse> postReport(@Header("X-AUTH-TOKEN") String token,
+                                    @Body ReportRequest request);
+
 }
