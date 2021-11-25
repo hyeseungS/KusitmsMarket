@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
-import android.media.metrics.Event;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -14,7 +13,6 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
-import android.widget.RelativeLayout;
 import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
@@ -22,10 +20,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.viewpager.widget.ViewPager;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.kusitms.kusitmsmarket.EventImage;
+import com.kusitms.kusitmsmarket.Image;
 import com.kusitms.kusitmsmarket.MainActivity;
 import com.kusitms.kusitmsmarket.MarketList;
 import com.kusitms.kusitmsmarket.R;
@@ -46,7 +43,6 @@ import com.naver.maps.map.overlay.OverlayImage;
 import com.naver.maps.map.util.FusedLocationSource;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
@@ -600,13 +596,13 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
             }
         });
 
-        RetrofitClient.getAPIService().getEventImage().enqueue(new Callback<EventImage>() {
+        RetrofitClient.getAPIService().getEventImage().enqueue(new Callback<Image>() {
             @Override
-            public void onResponse(Call<EventImage> call, Response<EventImage> response) {
+            public void onResponse(Call<Image> call, Response<Image> response) {
                 Log.d("TAG", response.code() + "");
 
                 if (response.isSuccessful() && response.body() != null) {
-                    EventImage resource = response.body();
+                    Image resource = response.body();
                     List<String> img = resource.data;
                     ViewPager2 viewpager = (ViewPager2) root.findViewById(R.id.event_image);
 
@@ -617,7 +613,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
             }
 
             @Override
-            public void onFailure(Call<EventImage> call, Throwable t) {
+            public void onFailure(Call<Image> call, Throwable t) {
                 Log.d("test", "실패");
                 t.printStackTrace();
             }

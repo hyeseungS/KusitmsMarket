@@ -102,7 +102,14 @@ public interface RetrofitAPI {
     Call<StoreList> getStoreLike(@Header("X-AUTH-TOKEN") String token);
 
     @GET("/eventImage/pay")
-    Call<EventImage> getEventImage();
+    Call<Image> getEventImage();
+
+
+    @GET("/storeImage/store")
+    Call<Image> getStoreImgData(@Query("storeName") String storeName);
+
+    @GET("/store/getReview")
+    Call<Review> getStoreReviewData(@Query("storeName") String storeName);
 
     // 제보하기
     @POST("/mypage/report-store")

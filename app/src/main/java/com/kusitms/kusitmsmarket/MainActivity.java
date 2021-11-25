@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         token = intent.getStringExtra("user_token");
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
