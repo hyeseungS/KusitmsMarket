@@ -11,9 +11,11 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.kusitms.kusitmsmarket.R;
 import com.kusitms.kusitmsmarket.model.EventItem;
 import com.kusitms.kusitmsmarket.model.ListVIewNoticeItem;
+import com.kusitms.kusitmsmarket.ui.mypage.EventActivity;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,8 +25,8 @@ import java.util.ArrayList;
 
 public class EventMypageApater extends BaseAdapter {
     private ArrayList<EventItem> listViewItemList = new ArrayList<EventItem>();
-
-    public EventMypageApater() {  }
+    private Context context;
+    public EventMypageApater(Context context) { this.context = context; }
 
     // listviewitem 항목개수
     @Override
@@ -64,8 +66,11 @@ public class EventMypageApater extends BaseAdapter {
 
         // 아이템 내 각 위젯에 데이터 반영
 
+         Glide.with(context)
+                                    .load(listViewItem)
+                                    .into(iconImageView);
 
-        Bitmap bitmap = null;
+            Bitmap bitmap = null;
 
         //iconImageView.(listViewItem.getImgEvent());
 
