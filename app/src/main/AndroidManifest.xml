@@ -27,7 +27,7 @@
             android:name=".ui.market.ReviewActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.market.ChatActivity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
             android:name=".ui.price.CategoryActivity"
@@ -48,7 +48,7 @@
             android:name=".ui.mypage.ReportLocationActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.market.ChatActivity"
             android:exported="true" />
         <activity
             android:name=".RegisterActivity"

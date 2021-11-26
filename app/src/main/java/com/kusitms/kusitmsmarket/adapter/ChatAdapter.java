@@ -1,88 +1,129 @@
 package com.kusitms.kusitmsmarket.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.kusitms.kusitmsmarket.R;
 import com.kusitms.kusitmsmarket.model.ChatData;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
-public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ChatViewHolder> {
 
-    List<ChatData> chatDataList;
+public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> {
+    private List<ChatData> mDataset;
     private String myNickName;
+
+    public String getMyNickName() {
+        return myNickName;
+    }
 
     public void setMyNickName(String myNickName) {
         this.myNickName = myNickName;
     }
 
-    public void setChatDataList(List<ChatData> chatDataList) {
-        this.chatDataList = chatDataList;
-    }
+    // Provide a reference to the views for each data item
+    // Complex data items may need more than one view per item, and
+    // you provide access to all the views for a data item in a view holder
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
+        // each data item is just a string in this case
+        public TextView TextView_nickname;
+        public TextView TextView_msg;
+        public View rootView;
 
-    public static class ChatViewHolder extends RecyclerView.ViewHolder {
+        public LinearLayout layout;
 
-        public TextView tvName;
-        private TextView tvMsg;
-        private View rootView;
 
-        public ChatViewHolder(View itemView) {
-            super(itemView);
-            tvName = itemView.findViewById(R.id.tv_item_nickname);
-            tvMsg = itemView.findViewById(R.id.tv_item_msg);
-            rootView = itemView;
+        public MyViewHolder(View v) {
+            super(v);
+            TextView_nickname = v.findViewById(R.id.TextView_nickname);
+            TextView_msg = v.findViewById(R.id.TextView_msg);
+
+            layout = v.findViewById(R.id.linearLayout_chat);
+
+
+            rootView = v;
+
         }
+
+
     }
 
+    // Provide a suitable constructor (depends on the kind of dataset)
+    public ChatAdapter(List<ChatData> myDataset, Context context, String myNickName) {
+        //{"1","2"}
+        mDataset = myDataset;
+        setMyNickName(myNickName);
+    }
 
+    // Create new views (invoked by the layout manager)
     @Override
-    public ChatViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ChatAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent,
+                                                       int viewType) {
+        // create a new view
         LinearLayout v = (LinearLayout) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_chat, parent, false);
-        ChatViewHolder vh = new ChatViewHolder(v);
+                .inflate(R.layout.row_chat, parent, false);
+
+        MyViewHolder vh = new MyViewHolder(v);
         return vh;
     }
 
+    // Replace the contents of a view (invoked by the layout manager)
     @Override
-    public void onBindViewHolder(ChatViewHolder holder, int position) {
-        ChatData chat = chatDataList.get(position);
+    public void onBindViewHolder(MyViewHolder holder, int position) {
+        // - get element from your dataset at this position
+        // - replace the contents of the view with that element
+        ChatData chat = mDataset.get(position);
 
-        holder.tvName.setText(chat.getNickname());
-        holder.tvMsg.setText(chat.getMsg());
+        holder.TextView_nickname.setText(chat.getNickname());
+        holder.TextView_msg.setText(chat.getMsg());
 
-        // 오른쪽 왼쪽 설정
-        if(chat.getNickname().equals(this.myNickName)){
-            holder.tvMsg.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
-            holder.tvName.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
-        } else {
-            holder.tvMsg.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
-            holder.tvName.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
+        System.out.println("==========주목==============");
+        System.out.println("번들로 받아온 것 : " + chat.getNickname().toString());
+        System.out.println("origin : " + getMyNickName());
+
+        if(chat.getNickname().equals(getMyNickName())) {
+            holder.TextView_msg.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
+            holder.TextView_nickname.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
+
+            holder.layout.setGravity(Gravity.RIGHT);
+
+            //holder.TextView_msg.setBackgroundColor(Color.parseColor("#B3FF5E00"));
         }
+        else {
+            holder.TextView_msg.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
+            holder.TextView_nickname.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
+
+            holder.layout.setGravity(Gravity.LEFT);
+            //holder.TextView_msg.setBackgroundColor(Color.parseColor("#E5E5E5"));
+        }
+
     }
 
-
+    // Return the size of your dataset (invoked by the layout manager)
     @Override
     public int getItemCount() {
-        return  chatDataList != null ? 0 : null;
+
+        //삼항 연산자
+        return mDataset == null ? 0 :  mDataset.size();
     }
 
     public ChatData getChat(int position) {
-        return chatDataList != null ? chatDataList.get(position) : null;
+        return mDataset != null ? mDataset.get(position) : null;
     }
 
-    // 채팅 갱신
     public void addChat(ChatData chat) {
-        chatDataList.add(chat);
-        notifyItemInserted(chatDataList.size()-1);
+        mDataset.add(chat);
+        notifyItemInserted(mDataset.size()-1); //갱신
     }
+
 }
