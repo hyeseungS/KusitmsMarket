@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ui.mypage.UserInfoActivity">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,12 +15,29 @@
         tools:layout_editor_absoluteX="-16dp"
         tools:layout_editor_absoluteY="0dp">
 
+        <Button
+            android:id="@+id/user_info_btn_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="저장"/>
+
+        <ImageView
+            android:id="@+id/user_info_iv_profileImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_user"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="닉네임 수정"/>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center">
 
-            <TextView
+            <EditText
                 android:id="@+id/user_info_nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -28,12 +46,108 @@
                 android:textStyle="bold" />
 
             <Button
-                android:id="@+id/user_info_btn_nickname"
+                android:id="@+id/user_info_btn_check_nickname"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_outline_edit_24"
-                android:text="닉네임 수정"
+                android:text="중복확인"
                 android:textSize="12dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="이메일"/>
+
+            <TextView
+                android:id="@+id/user_info_tv_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="dmsgml@naver.com"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="비밀번호"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="현재 비밀번호"/>
+
+        <EditText
+            android:id="@+id/user_info_et_pw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="......"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="신규 비밀번호"/>
+
+        <EditText
+            android:id="@+id/user_info_et_pw_new"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="........."/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="휴대폰 인증"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="마케팅 수신으로 사용됩니다"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/user_info_et_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="휴대폰"/>
+
+            <Button
+                android:id="@+id/user_info_btn_check_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="재인증"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/user_info_et_certification"
+                android:hint="인증확인"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/user_info_btn_check_certification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="인증확인"/>
+
+
         </LinearLayout>
 
         <LinearLayout
@@ -68,25 +182,7 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="개인정보"
-                android:textSize="18dp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/user_info_btn_info"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:drawableRight="@drawable/ic_baseline_arrow_forward_ios_24"
-                android:text="전체보기" />
-
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"

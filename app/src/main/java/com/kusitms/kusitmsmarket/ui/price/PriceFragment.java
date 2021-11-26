@@ -223,6 +223,14 @@ public class PriceFragment extends Fragment {
                         category = quote.getA_name();
                         unit = quote.getUnit();
 
+                        String str = category;
+                        String result1 = str.substring(0,str.lastIndexOf("(")+1);
+
+                        System.out.println(result1);
+
+
+                        img = showCategoryImage(result1);
+
                         // 데이터 추가
                         data.add(new PriceData(img, category, unit, price));
                     }
@@ -272,6 +280,18 @@ public class PriceFragment extends Fragment {
                                 category = quote.getA_name();
                                 unit = quote.getUnit();
 
+                                String str = category;
+                                String result1 = str.substring(0,str.lastIndexOf("(")+1);
+
+                                System.out.println(result1);
+
+
+                                img = showCategoryImage(result1);
+
+                                if(img == R.drawable.ic_user) {
+                                    img = showCategoryImage(category);
+                                }
+
                                 // 데이터 추가
                                 data.add(new PriceData(img, category, unit, price));
                             }
@@ -315,5 +335,47 @@ public class PriceFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    public int showCategoryImage(String category) {
+        switch (category) {
+            case "오징어":
+                return R.drawable.ic_category_squid;
+            case "호박":
+                return R.drawable.ic_category_pumpkin;
+            case "돼지고기":
+                return  R.drawable.ic_category_pork;
+            case "사과":
+                return  R.drawable.ic_category_apple;
+            case "양파":
+                return  R.drawable.ic_category_onion;
+            case "배추":
+                return  R.drawable.ic_category_cabbage;
+            case "달걀":
+                return  R.drawable.ic_category_egg;
+            case "고구마":
+                return  R.drawable.ic_category_sweet_potato;
+            case "닭고기":
+                return  R.drawable.ic_category_chicken;
+            case "오징어(":
+                return R.drawable.ic_category_squid;
+            case "호박(":
+                return R.drawable.ic_category_pumpkin;
+            case "돼지고기(":
+                return  R.drawable.ic_category_pork;
+            case "사과(":
+                return  R.drawable.ic_category_apple;
+            case "양파(":
+                return  R.drawable.ic_category_onion;
+            case "배추(":
+                return  R.drawable.ic_category_cabbage;
+            case "달걀(":
+                return  R.drawable.ic_category_egg;
+            case "고구마(":
+                return  R.drawable.ic_category_sweet_potato;
+            case "닭고기(":
+                return  R.drawable.ic_category_chicken;
+        }
+        return R.drawable.ic_category_pumpkin;
     }
 }
