@@ -12,7 +12,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="20dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="-261dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -60,6 +62,14 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>
+        <TextView
+            android:id="@+id/tv_report_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:text="가게위치"
+            android:textSize="24sp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -82,7 +92,7 @@
 
 
         <EditText
-            android:id="@+id/market_name"
+            android:id="@+id/et_report_market_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
@@ -103,7 +113,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/store_name"
+            android:id="@+id/et_report_store_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
@@ -131,14 +141,14 @@
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/rg_btn1"
+                android:id="@+id/rg_every"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="상설 시장"
                 android:textSize="15sp" />
 
             <RadioButton
-                android:id="@+id/rg_btn2"
+                android:id="@+id/rg_every_not"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -166,14 +176,14 @@
             android:orientation="horizontal">
 
             <CheckBox
-                android:id="@+id/checkBox1"
+                android:id="@+id/checkbox_cash"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="현금"
                 android:textSize="15sp" />
 
             <CheckBox
-                android:id="@+id/checkBox2"
+                android:id="@+id/checkbox_card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -181,7 +191,7 @@
                 android:textSize="15sp" />
 
             <CheckBox
-                android:id="@+id/checkBox3"
+                android:id="@+id/checkbox_account_transfer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -189,14 +199,14 @@
                 android:textSize="15sp" />
 
             <CheckBox
-                android:id="@+id/checkBox4"
+                android:id="@+id/checkbox_gift_card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="온누리"
                 android:textSize="15sp" />
 
             <CheckBox
-                android:id="@+id/checkBox5"
+                android:id="@+id/checkbox_zero_pay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
@@ -213,6 +223,10 @@
             android:textColor="#FF5E00"
             android:textSize="13sp"
             android:textStyle="bold" />
+
+       <!-- 운영시간 설정 -->
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
