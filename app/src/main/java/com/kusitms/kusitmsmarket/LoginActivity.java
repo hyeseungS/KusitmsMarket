@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.kusitms.kusitmsmarket.request.LoginRequest;
 import com.kusitms.kusitmsmarket.response.UserToken;
+import com.kusitms.kusitmsmarket.ui.market.ReviewActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,11 +20,10 @@ import retrofit2.Response;
 public class LoginActivity extends AppCompatActivity {
 
     EditText editId, editPassword;
-    Button btnLogin, btnSignUp, btnLoginGoogle;
+    Button btnLogin, btnSignUp;
 
     // token
     String token;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +34,14 @@ public class LoginActivity extends AppCompatActivity {
         editPassword = findViewById(R.id.et_password);
         btnLogin = findViewById(R.id.btn_login);
         btnSignUp = findViewById(R.id.btn_register);
-        btnLoginGoogle = findViewById(R.id.btn_login_google);
 
 
         // MainActivity
         Intent intentMainActivity = new Intent(this, MainActivity.class);
         // RegisterActivity
         Intent intentRegisterActivity = new Intent(this, RegisterActivity.class);
+        // RegisterActivity
+        Intent intentReviewActivity = new Intent(this, ReviewActivity.class);
 
         // 로그인 버튼 누를 때
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +65,6 @@ public class LoginActivity extends AppCompatActivity {
                             UserToken userToken = response.body();
                             token = userToken.getToken();
                             System.out.println("토큰 : " + token + "이 저장되었습니다.");
-
 
                             Bundle bundle = new Bundle();
                             bundle.putString("userToken", token);
@@ -95,13 +95,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        // 구글로그인 버튼 누를 때
-        btnLoginGoogle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
     }
 
 

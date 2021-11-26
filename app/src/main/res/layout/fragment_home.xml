@@ -33,7 +33,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/search_background"
                 android:padding="10dp"
-                app:queryHint="시장 검색" />
+                android:searchIcon="@drawable/ic_baseline_search"
+                android:queryHint="시장 검색" />
 
             <SearchView
                 android:id="@+id/searchStore"
@@ -43,7 +44,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/search_background"
                 android:padding="10dp"
-                app:queryHint="점포 검색" />
+                android:searchIcon="@drawable/ic_baseline_search"
+                android:queryHint="점포 검색" />
         </LinearLayout>
 
 

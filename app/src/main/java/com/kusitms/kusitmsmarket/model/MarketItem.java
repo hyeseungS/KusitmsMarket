@@ -1,4 +1,4 @@
-package com.kusitms.kusitmsmarket;
+package com.kusitms.kusitmsmarket.model;
 
 public class MarketItem {
     String name;

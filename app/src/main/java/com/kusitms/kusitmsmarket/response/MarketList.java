@@ -1,4 +1,4 @@
-package com.kusitms.kusitmsmarket;
+package com.kusitms.kusitmsmarket.response;
 
 import com.google.gson.annotations.SerializedName;
 

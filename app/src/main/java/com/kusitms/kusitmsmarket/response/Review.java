@@ -1,4 +1,4 @@
-package com.kusitms.kusitmsmarket;
+package com.kusitms.kusitmsmarket.response;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -36,9 +36,9 @@ public class Review {
         @SerializedName("reviewMemo")
         private String reviewMemo;
         @SerializedName("reviewScore")
-        private String reviewScore;
+        private double reviewScore;
 
-        public ReviewData(String reviewUserName, String reviewMemo, String reviewScore) {
+        public ReviewData(String reviewUserName, String reviewMemo, double reviewScore) {
             this.reviewUserName = reviewUserName;
             this.reviewMemo = reviewMemo;
             this.reviewScore = reviewScore;
@@ -60,11 +60,11 @@ public class Review {
             this.reviewMemo = reviewMemo;
         }
 
-        public String getReviewScore() {
+        public double getReviewScore() {
             return reviewScore;
         }
 
-        public void setReviewScore(String reviewScore) {
+        public void setReviewScore(double reviewScore) {
             this.reviewScore = reviewScore;
         }
 

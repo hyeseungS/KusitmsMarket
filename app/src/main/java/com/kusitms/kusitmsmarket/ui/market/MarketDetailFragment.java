@@ -1,5 +1,6 @@
 package com.kusitms.kusitmsmarket.ui.market;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -15,11 +17,12 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import com.kusitms.kusitmsmarket.Image;
+import com.kusitms.kusitmsmarket.MainActivity;
+import com.kusitms.kusitmsmarket.response.Image;
 import com.kusitms.kusitmsmarket.R;
 import com.kusitms.kusitmsmarket.RetrofitClient;
-import com.kusitms.kusitmsmarket.Review;
-import com.kusitms.kusitmsmarket.StoreList;
+import com.kusitms.kusitmsmarket.response.Review;
+import com.kusitms.kusitmsmarket.response.StoreList;
 import com.kusitms.kusitmsmarket.databinding.FragmentMarketDetailBinding;
 
 import java.util.List;
@@ -32,6 +35,8 @@ public class MarketDetailFragment extends Fragment implements View.OnClickListen
 
     private FragmentMarketDetailBinding binding;
     private static String storeName;
+    private String finalUserName;
+    private double storeScore;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -56,6 +61,8 @@ public class MarketDetailFragment extends Fragment implements View.OnClickListen
         TextView personalScore = (TextView) root.findViewById(R.id.personalScore);
         TextView reviewContent = (TextView) root.findViewById(R.id.reviewContent);
 
+        RatingBar totalRating = (RatingBar) root.findViewById(R.id.totalRating);
+        RatingBar personalRating = (RatingBar) root.findViewById(R.id.personalRating);
 
         RetrofitClient.getAPIService().getSearchStoreData(storeName).enqueue(new Callback<StoreList>() {
             @Override
@@ -67,18 +74,22 @@ public class MarketDetailFragment extends Fragment implements View.OnClickListen
                     List<StoreList.StoreData> dataList = resource.data;
                     if(dataList.size() != 0) {
                         StoreList.StoreData data = dataList.get(0);
-                        if (data.getStoreAddress() != null)
+                        if (data.getStoreAddress() != null) // 주소
                             address.setText(data.getStoreAddress());
-//                    if(data.getStoreTime() != null)
-//                        time.setText(data.getStoreTime());
-//                    if(data.getStoreLink() != null)
-//                        link.setText(data.getStoreLinke());
-                        if (data.getStorePhone() != null)
+                        if(data.getStoreTime() != null) // 영업시간
+                            time.setText(data.getStoreTime());
+                        if(data.getStoreLink() != null) // 링크
+                            link.setText(data.getStoreLink());
+                        if (data.getStorePhone() != null) // 전화번호
                             phone.setText(data.getStorePhone());
-                        if (data.getUserName() != null) {
+                        if (data.getUserName() != null) { // 최종 작성자
                             userName.setText("최종 작성자(" + data.getUserName() + ")");
                             firstUserName.setText(data.getUserName());
+                            finalUserName = data.getUserName();
                         }
+                        storeScore = dataList.get(0).getStoreScore();
+                        totalScore.setText(String.format("%.1f", storeScore)); // 가게 점수
+                        totalRating.setRating((float) storeScore); // 가게 점수 (별점)
                     }
 
                     Log.d("test", "성공");
@@ -92,6 +103,7 @@ public class MarketDetailFragment extends Fragment implements View.OnClickListen
             }
         });
 
+        // 가게 사진 가져오기
         RetrofitClient.getAPIService().getStoreImgData(storeName).enqueue(new Callback<Image>() {
             @Override
             public void onResponse(Call<Image> call, Response<Image> response) {
@@ -118,6 +130,7 @@ public class MarketDetailFragment extends Fragment implements View.OnClickListen
             }
         });
 
+        // 리뷰 1개 가져오기
         RetrofitClient.getAPIService().getStoreReviewData(storeName).enqueue(new Callback<Review>() {
             @Override
             public void onResponse(Call<Review> call, Response<Review> response) {
@@ -128,8 +141,9 @@ public class MarketDetailFragment extends Fragment implements View.OnClickListen
                     List<Review.ReviewData> dataList = resource.data;
                     reviewCnt.setText("리뷰(" + resource.count + "개)");
                     if(dataList.size() != 0 && dataList.get(0) != null) {
-                        personalScore.setText(dataList.get(0).getReviewScore());
+                        personalScore.setText(String.format("%.1f", dataList.get(0).getReviewScore()));
                         reviewContent.setText(dataList.get(0).getReviewMemo());
+                        personalRating.setRating((float)dataList.get(0).getReviewScore());
                     }
 
                     Log.d("test", "성공");
@@ -143,11 +157,16 @@ public class MarketDetailFragment extends Fragment implements View.OnClickListen
             }
         });
 
+        // 정보 수정 버튼
         AppCompatButton open = (AppCompatButton) root.findViewById(R.id.edit_button);
         open.setOnClickListener(this);
+
+        // 리뷰 더보기
+        ImageButton moreReview = (ImageButton) root.findViewById(R.id.moreReview);
+        moreReview.setOnClickListener(this);
         return root;
     }
-
+    public static String getStoreName() { return storeName; }
     public static void setStoreName(String s) {
         storeName = s;
     }
@@ -164,11 +183,22 @@ public class MarketDetailFragment extends Fragment implements View.OnClickListen
         switch (v.getId()) {
 
             case R.id.edit_button:
-
+                Bundle args = new Bundle();
+                // 최종 작성자 다이얼로그로 보내기
+                args.putString("userName", finalUserName);
                 FragmentManager fm = getActivity().getSupportFragmentManager();
                 FragmentEditDialog dialogFragment = new FragmentEditDialog();
+                dialogFragment.setArguments(args);
                 dialogFragment.show(fm, "fragment_dialog_test");
 
+                break;
+
+            case R.id.moreReview:
+                Intent intent = new Intent(getActivity(), ReviewActivity.class);
+                ReviewActivity.setStoreName(storeName);
+                ReviewActivity.setUserToken(((MainActivity) getActivity()).getUserToken());
+                ReviewActivity.setStoreScore(storeScore);
+                startActivity(intent);
                 break;
 
         }
