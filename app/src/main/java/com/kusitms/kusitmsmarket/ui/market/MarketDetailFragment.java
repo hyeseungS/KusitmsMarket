@@ -194,11 +194,16 @@ public class MarketDetailFragment extends Fragment implements View.OnClickListen
                 break;
 
             case R.id.moreReview:
-                Intent intent = new Intent(getActivity(), ReviewActivity.class);
+                Intent intent1 = new Intent(getActivity(), ReviewActivity.class);
                 ReviewActivity.setStoreName(storeName);
                 ReviewActivity.setUserToken(((MainActivity) getActivity()).getUserToken());
                 ReviewActivity.setStoreScore(storeScore);
-                startActivity(intent);
+                startActivity(intent1);
+                break;
+
+            case R.id.chatting_btn:
+                Intent intent2 = new Intent(getContext(), ChatActivity.class);
+                startActivity(intent2);
                 break;
 
         }

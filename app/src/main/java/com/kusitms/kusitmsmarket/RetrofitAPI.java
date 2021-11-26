@@ -18,8 +18,11 @@ import com.kusitms.kusitmsmarket.response.SignUpResponse;
 import com.kusitms.kusitmsmarket.response.UserInfoResponse;
 import com.kusitms.kusitmsmarket.response.UserToken;
 
+import java.lang.reflect.Type;
 import java.util.List;
+import java.util.Map;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -31,6 +34,7 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
+import retrofit2.http.QueryMap;
 
 public interface RetrofitAPI {
 
@@ -169,5 +173,20 @@ public interface RetrofitAPI {
     // 시장 시세 제공 api (품목별)
     @POST("/quote/a-name")
     Call<QuoteResponse> postQuoteAName(@Body ANameRequest aNameRequest);
+
+    // 닉네임 중복확인
+    @GET("/api/check-duplicate/nickname/{nickname}")
+    Call<Boolean> getCheckDuplicateNickname(@Path("nickname") String nickname);
+
+
+    // 휴대전화 인증
+    @POST("/sendSMS")
+    Call<ResponseBody> postSendSMS(@QueryMap Map<String,String> query);
+
+
+    // 유저 정보 업데이트
+    @PUT("/api/modify-nickname/")
+    Call<ResponseBody> putModifyNickname(@Header("X-AUTH-TOKEN") String token,
+                                         @Query("nickname") String nickname);
 
 }

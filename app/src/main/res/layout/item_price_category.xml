@@ -3,36 +3,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
     <ImageView
         android:id="@+id/item_price_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_user"/>
+        android:src="@drawable/ic_user" />
 
     <TextView
         android:id="@+id/item_price_tv_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="품목 이름"/>
+        android:text="품목 이름"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/item_price_tv_unit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="(단위)"/>
+        android:text="(단위)"
+        android:textColor="@color/black"
+        android:textSize="11sp" />
 
     <TextView
         android:id="@+id/item_price_tv_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="가격(원)"/>
+        android:text="가격(원)"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/item_price_btn_price"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="선택하기"/>
+        android:layout_height="40dp"
+        app:backgroundTint="@null"
+        android:background="@drawable/orange_button"
+        android:textStyle="bold"
+        android:textSize="12sp"
+        android:textColor="@color/white"
+        android:text="선택하기" />
 
 </LinearLayout>

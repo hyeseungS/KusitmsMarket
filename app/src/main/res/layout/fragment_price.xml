@@ -28,25 +28,9 @@
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/text_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:textAlignment="center"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/test"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="지워야함:test용" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="5dp"
             android:text="시장별 시세"
             android:textColor="#6D3805"
             android:textSize="18sp"
@@ -117,13 +101,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
+            android:layout_marginVertical="10dp"
             android:orientation="horizontal">
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="10dp"
+                android:layout_marginVertical="5dp"
                 android:layout_marginLeft="20dp"
                 android:drawableStart="@drawable/ic_baseline_outlined_flag_24"
                 android:drawablePadding="10dp"

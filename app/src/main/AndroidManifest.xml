@@ -16,10 +16,13 @@
         android:theme="@style/Theme.KusitmsMarket.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.price.SubCategoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.market.ReviewActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.price.ChatActivity"
+            android:name=".ui.market.ChatActivity"
             android:exported="false" />
         <activity
             android:name=".ui.price.CategoryActivity"
@@ -47,7 +50,7 @@
             android:exported="true" />
         <activity
             android:name=".LoginActivity"
-            android:exported="true" >
+            android:exported="true"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
