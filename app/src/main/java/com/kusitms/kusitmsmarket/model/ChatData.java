@@ -1,9 +1,6 @@
 package com.kusitms.kusitmsmarket.model;
 
-import java.io.Serializable;
-
 public class ChatData {
-
     private String msg;
     private String nickname;
 
@@ -23,3 +20,4 @@ public class ChatData {
         this.nickname = nickname;
     }
 }
+

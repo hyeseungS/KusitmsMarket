@@ -9,7 +9,7 @@
     android:weightSum="1">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_chat"
+        android:id="@+id/my_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -22,13 +22,13 @@
         android:weightSum="1">
 
         <EditText
-            android:id="@+id/et_chat"
+            android:id="@+id/EditText_chat"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"/>
 
         <Button
-            android:id="@+id/btn_chat_send"
+            android:id="@+id/Button_send"
             android:text="전송"
             android:layout_width="80dp"
             android:layout_height="match_parent"/>
