@@ -75,11 +75,11 @@
                 android:id="@+id/location_setting_btn"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/orange_button"
                 android:text="이 위치로 주소 설정"
                 android:textColor="#FFF9FF"
-                android:textSize="12dp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:backgroundTint="@null" />
 

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="?attr/actionBarSize"
     tools:context=".ui.mypage.ReportActivity">
 
     <LinearLayout
@@ -217,7 +216,16 @@
             android:textStyle="bold" />
 
        <!-- 운영시간 설정 -->
-
+        <EditText
+            android:id="@+id/et_time_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/white_layout"
+            android:hint="ex)연중무휴"
+            android:padding="10dp"
+            android:textColorHint="#CECECE"
+            android:textSize="18sp" />
 
 
         <LinearLayout
@@ -231,8 +239,8 @@
         <Button
             android:id="@+id/report_btn"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginTop="10dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/orange_button"
             android:text="제보하기"
             android:textColor="#FFF9FF"

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class MarketRecyclerAdapter extends RecyclerView.Adapter<MarketRecyclerAdapter.ViewHolder> {
 
-    private ArrayList<MarketItem> mMarketList;
+    private ArrayList<MarketItem> mMarketList = new ArrayList<MarketItem>();
 
     @NonNull
     @Override

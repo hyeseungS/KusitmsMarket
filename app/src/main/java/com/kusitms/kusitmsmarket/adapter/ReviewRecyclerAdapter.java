@@ -29,7 +29,7 @@ import java.util.ArrayList;
 
 public class ReviewRecyclerAdapter extends RecyclerView.Adapter<ReviewRecyclerAdapter.ViewHolder> {
 
-    private ArrayList<ReviewItem> mReviewList;
+    private ArrayList<ReviewItem> mReviewList = new ArrayList<ReviewItem>();
     private Context context;
 
     @NonNull

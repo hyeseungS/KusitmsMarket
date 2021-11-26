@@ -254,12 +254,12 @@ public class PriceFragment extends Fragment {
 
                 // cnt 업데이트
 
-                ((AppTest) getActivity().getApplication()).update();
-                if(((AppTest) getActivity().getApplication()).getCount() == 0) {
-
-                    //광고 불러오는 코드
-
-                }
+//                ((AppTest) getActivity().getApplication()).update();
+//                if(((AppTest) getActivity().getApplication()).getCount() == 0) {
+//
+//                    //광고 불러오는 코드
+//
+//                }
 
                 MarketNameRequest marketNameRequest = new MarketNameRequest(marketName);
 

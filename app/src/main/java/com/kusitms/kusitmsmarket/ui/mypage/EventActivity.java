@@ -34,7 +34,6 @@ import retrofit2.Response;
 public class EventActivity extends AppCompatActivity {
 
     ListView listView;
-    ImageView imageView;
     Bitmap bitmap;
 
     @Override
@@ -43,8 +42,7 @@ public class EventActivity extends AppCompatActivity {
         setContentView(R.layout.activity_event);
 
         listView = findViewById(R.id.event_list);
-        imageView = findViewById(R.id.item_mypage_event);
-        EventMypageApater adapter = new EventMypageApater(this);
+        EventMypageApater adapter = new EventMypageApater();
         listView.setAdapter(adapter);
 
 
@@ -56,11 +54,10 @@ public class EventActivity extends AppCompatActivity {
                 if(response.isSuccessful()) {
                     Log.d("연결이 성공적 : ", response.body().toString());
 
-                    List<String> imgurl= response.body().getEventImageList();
+                    List<String> imgUrl= response.body().getEventImageList();
 
-                    for (String str:
-                         imgurl) {
-
+                    for (String str: imgUrl) {
+                            System.out.println(str);
                             adapter.addItem(str);
 //
                         /* ===========문자열 받아오는 것까지는 가능한데 어떻게 띄우는지 모르겠어!!========*/

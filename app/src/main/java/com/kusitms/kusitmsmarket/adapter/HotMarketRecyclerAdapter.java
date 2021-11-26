@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class HotMarketRecyclerAdapter extends RecyclerView.Adapter<HotMarketRecyclerAdapter.ViewHolder> {
 
-    private ArrayList<MarketItem> mHotMarketList;
+    private ArrayList<MarketItem> mHotMarketList = new ArrayList<MarketItem>();
 
     @NonNull
     @Override

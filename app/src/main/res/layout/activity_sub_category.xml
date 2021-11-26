@@ -7,6 +7,7 @@
     tools:context=".ui.price.SubCategoryActivity"
     android:id="@+id/subCategoryLayout"
     android:layout_marginHorizontal="20dp"
+    android:layout_marginTop="5dp"
     android:orientation="vertical"
     android:gravity="center">
 

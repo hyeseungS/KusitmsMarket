@@ -62,7 +62,11 @@ public class MarketDetailFragment extends Fragment implements View.OnClickListen
         TextView personalScore = (TextView) root.findViewById(R.id.personalScore);
         TextView reviewContent = (TextView) root.findViewById(R.id.reviewContent);
 
-        Button btnChat = root.findViewById(R.id.chatting_btn);
+        ImageButton heart = (ImageButton) root.findViewById(R.id.heart);
+        if(storeName == "환일종합식품") {
+            heart.setBackgroundResource(R.drawable.ic_favorite_border);
+        }
+       Button btnChat = root.findViewById(R.id.chatting_btn);
 
         btnChat.setOnClickListener(new View.OnClickListener() {
             @Override

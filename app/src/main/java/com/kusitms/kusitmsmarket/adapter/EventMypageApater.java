@@ -25,8 +25,7 @@ import java.util.ArrayList;
 
 public class EventMypageApater extends BaseAdapter {
     private ArrayList<EventItem> listViewItemList = new ArrayList<EventItem>();
-    private Context context;
-    public EventMypageApater(Context context) { this.context = context; }
+    public EventMypageApater() {  }
 
     // listviewitem 항목개수
     @Override
@@ -66,9 +65,7 @@ public class EventMypageApater extends BaseAdapter {
 
         // 아이템 내 각 위젯에 데이터 반영
 
-         Glide.with(context)
-                                    .load(listViewItem)
-                                    .into(iconImageView);
+         Glide.with(context).load(listViewItem.getImgEvent()).into(iconImageView);
 
             Bitmap bitmap = null;
 

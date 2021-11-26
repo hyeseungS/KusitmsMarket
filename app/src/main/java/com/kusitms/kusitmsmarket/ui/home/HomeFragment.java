@@ -475,12 +475,12 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                     Marker marker = new Marker();
                     marker.setPosition(markersPosition.get(i));
                     marker.setMap(naverMap);
-                    String sn = "진미반찬";
+                    String sn = "환일종합식품";
                     marker.setOnClickListener(new Overlay.OnClickListener() {
                         @Override
                         public boolean onClick(@NonNull Overlay overlay) {
                             // StoreName 넘기기
-                            if (sn.equals("시장")) {
+                            if (!sn.equals("시장")) {
                                 MarketDetailFragment.setStoreName(sn);
                                 ((MainActivity) MainActivity.mContext).moveToMarker();
                             }
