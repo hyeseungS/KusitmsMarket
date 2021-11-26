@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.kusitms.kusitmsmarket.AppTest;
 import com.kusitms.kusitmsmarket.LoginActivity;
 import com.kusitms.kusitmsmarket.MainActivity;
 import com.kusitms.kusitmsmarket.R;
@@ -23,6 +24,7 @@ import com.kusitms.kusitmsmarket.RetrofitAPI;
 import com.kusitms.kusitmsmarket.RetrofitClient;
 import com.kusitms.kusitmsmarket.response.UserInfoResponse;
 import com.kusitms.kusitmsmarket.response.UserToken;
+import com.kusitms.kusitmsmarket.response.ValidateResponse;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -122,19 +124,21 @@ public class UserInfoActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Call<Boolean> call = RetrofitClient.getAPIService().getCheckDuplicateNickname(nickname);
+                Call<ValidateResponse> call = RetrofitClient.getAPIService().getCheckDuplicateNickname(nickname);
 
-                call.enqueue(new Callback<Boolean>() {
+                call.enqueue(new Callback<ValidateResponse>() {
                     @Override
-                    public void onResponse(Call<Boolean> call, Response<Boolean> response) {
+                    public void onResponse(Call<ValidateResponse> call, Response<ValidateResponse> response) {
                         if(response.isSuccessful()) {
                             Log.d("연결이 성공적 : ", response.body().toString());
 
-                            Boolean bool = response.body();
+                            ValidateResponse.Validate validate = response.body().getValidate();
+
+                            String bool = validate.getResponse();
 
                             System.out.println("bool : " + bool);
 
-                            if(bool.booleanValue()){
+                            if(bool.equals("true")){
                                 Toast.makeText(getApplicationContext(), "이미 존재하는 닉네임입니다. 다시 입력해주세요.", Toast.LENGTH_SHORT).show();
                             }else {
                                 Toast.makeText(getApplicationContext(), "가능한 닉네임입니다.", Toast.LENGTH_SHORT).show();
@@ -147,7 +151,7 @@ public class UserInfoActivity extends AppCompatActivity {
                     }
 
                     @Override
-                    public void onFailure(Call<Boolean> call, Throwable t) {
+                    public void onFailure(Call<ValidateResponse> call, Throwable t) {
                         Log.e("연결실패", t.getMessage());
                     }
                 });
@@ -203,40 +207,14 @@ public class UserInfoActivity extends AppCompatActivity {
             }
         });
 
-//        // 유저정보 버튼
-//        btnUserInfoSub.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Call<UserInfoResponse> call = RetrofitClient.getAPIService().getUserInfoData(token);
-//
-//                call.enqueue(new Callback<UserInfoResponse>() {
-//                    @Override
-//                    public void onResponse(Call<UserInfoResponse> call, Response<UserInfoResponse> response) {
-//                        if(response.isSuccessful()) {
-//                            Log.d("연결이 성공적 : ", response.body().toString());
-//
-//                            UserInfoResponse userInfoResponse = response.body();
-//
-//                            System.out.println("유저정보" + userInfoResponse.toString());
-//
-//                        } else {
-//                            Log.e("연결이 비정상적 : ", "error code : " + response.code());
-//                        }
-//
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<UserInfoResponse> call, Throwable t) {
-//                        Log.e("연결실패", t.getMessage());
-//                    }
-//                });
-//            }
-//        });
 
         // 로그아웃 버튼
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                // 로그아웃 할 때 업데이트
+                cnt = ((AppTest) getApplication()).getCount();
 
                 Call<String> call = RetrofitClient.getAPIService().putUserInfo(token, cnt);
 
@@ -245,6 +223,7 @@ public class UserInfoActivity extends AppCompatActivity {
                     public void onResponse(Call<String> call, Response<String> response) {
                         if(response.isSuccessful()) {
                             Log.d("연결이 성공적 : ", response.body().toString());
+
 
                             startActivity(loginActivity);
 

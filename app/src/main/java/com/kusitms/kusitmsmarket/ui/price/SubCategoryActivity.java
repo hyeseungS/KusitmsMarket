@@ -8,6 +8,7 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.kusitms.kusitmsmarket.AppTest;
 import com.kusitms.kusitmsmarket.R;
 import com.kusitms.kusitmsmarket.RetrofitClient;
 import com.kusitms.kusitmsmarket.adapter.ListViewAdapter;
@@ -34,6 +35,12 @@ public class SubCategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sub_category);
 
+        // cnt 업데이트
+        ((AppTest) getApplication()).update();
+        if(((AppTest) getApplication()).getCount() == 0) {
+
+            //광고 불러오는 코드
+        }
 
 
         Intent intent = getIntent();

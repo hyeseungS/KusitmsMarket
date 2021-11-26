@@ -19,11 +19,14 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
+
     EditText editId, editPassword;
     Button btnLogin, btnSignUp;
 
     // token
     String token;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +37,6 @@ public class LoginActivity extends AppCompatActivity {
         editPassword = findViewById(R.id.et_password);
         btnLogin = findViewById(R.id.btn_login);
         btnSignUp = findViewById(R.id.btn_register);
-
 
         // MainActivity
         Intent intentMainActivity = new Intent(this, MainActivity.class);
@@ -64,6 +66,11 @@ public class LoginActivity extends AppCompatActivity {
                             Log.d("연결이 성공적 : ", response.body().toString());
                             UserToken userToken = response.body();
                             token = userToken.getToken();
+
+                            // 로그인 할 때 cnt 불러와
+                            ((AppTest) getApplication()).setCount(userToken.getClick_cnt());
+
+
                             System.out.println("토큰 : " + token + "이 저장되었습니다.");
 
                             Bundle bundle = new Bundle();
