@@ -115,6 +115,7 @@
             android:background="#aaa"/>
 
         <Button
+            android:id="@+id/btn_mypage_event"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"

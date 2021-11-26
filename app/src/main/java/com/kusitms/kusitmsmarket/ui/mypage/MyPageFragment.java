@@ -40,7 +40,7 @@ public class MyPageFragment extends Fragment {
     private MyPageViewModel myPageViewModel;
     private FragmentMypageBinding binding;
 
-    Button btnNotice, btnUserInfo, btnCenter, btnReport;
+    Button btnNotice, btnUserInfo, btnCenter, btnReport, btnEvent;
     TextView tvNicknameMain;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -56,6 +56,7 @@ public class MyPageFragment extends Fragment {
         btnCenter = root.findViewById(R.id.btn_mypage_center);
         btnReport = root.findViewById(R.id.report_btn);
         tvNicknameMain = root.findViewById(R.id.nickname);
+        btnEvent = root.findViewById(R.id.btn_mypage_event);
 
         // 먼저 사용자 정보 저장하고 띄어주기
         Intent intent = getActivity().getIntent();
@@ -177,6 +178,18 @@ public class MyPageFragment extends Fragment {
                 intentCenterActivity.putExtras(sendBundle);
 
                 startActivity(intentCenterActivity);
+            }
+        });
+
+        // 이벤트 눌렀을 때
+        btnEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent eventIntent = new Intent(getActivity(), EventActivity.class);
+
+                startActivity(eventIntent);
+
             }
         });
 //        myPageViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {

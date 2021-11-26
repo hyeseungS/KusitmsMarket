@@ -1,5 +1,7 @@
 package com.kusitms.kusitmsmarket;
 
+import com.kusitms.kusitmsmarket.model.EventItem;
+import com.kusitms.kusitmsmarket.response.EventImageResponse;
 import com.kusitms.kusitmsmarket.response.Image;
 import com.kusitms.kusitmsmarket.response.MarketList;
 import com.kusitms.kusitmsmarket.response.Review;
@@ -188,5 +190,10 @@ public interface RetrofitAPI {
     @PUT("/api/modify-nickname/")
     Call<ResponseBody> putModifyNickname(@Header("X-AUTH-TOKEN") String token,
                                          @Query("nickname") String nickname);
+
+    // 마이페이지 이벤트 불러오기
+    @GET("/eventImage/all")
+    Call<EventImageResponse> getMyPageEventImage();
+
 
 }
