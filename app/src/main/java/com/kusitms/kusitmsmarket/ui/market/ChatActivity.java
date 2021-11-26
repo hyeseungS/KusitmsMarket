@@ -1,5 +1,6 @@
 package com.kusitms.kusitmsmarket.ui.market;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -31,7 +32,7 @@ public class ChatActivity extends AppCompatActivity {
     public  RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
     private List<ChatData> chatList;
-    private String nick = "nick2";
+    private String nick = "익명"  + (int)(Math.random()*100);
 
     private EditText EditText_chat;
     private Button Button_send;
@@ -43,6 +44,8 @@ public class ChatActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat);
 
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+
+
 
 
         Button_send = findViewById(R.id.Button_send);

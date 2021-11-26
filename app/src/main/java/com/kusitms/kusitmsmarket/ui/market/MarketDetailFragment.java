@@ -39,11 +39,17 @@ public class MarketDetailFragment extends Fragment implements View.OnClickListen
     private String finalUserName;
     private double storeScore;
 
+    private String token;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentMarketDetailBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        Intent intent = getActivity().getIntent();
+        token = intent.getStringExtra("user_token");
+
 
         TextView store = (TextView) root.findViewById(R.id.store);
         store.setText(storeName);
@@ -68,7 +74,7 @@ public class MarketDetailFragment extends Fragment implements View.OnClickListen
             @Override
             public void onClick(View view) {
                 Intent intent2 = new Intent(getContext(), ChatActivity.class);
-                System.out.println("dfghjkl;elajklfladfjljsal");
+                intent2.putExtra("user_token",token);
                 startActivity(intent2);
             }
         });

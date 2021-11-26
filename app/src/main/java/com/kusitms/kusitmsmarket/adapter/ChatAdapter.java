@@ -2,6 +2,8 @@ package com.kusitms.kusitmsmarket.adapter;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +22,15 @@ import java.util.List;
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> {
     private List<ChatData> mDataset;
     private String myNickName;
+
+    public String getMyNickName() {
+        return myNickName;
+    }
+
+    public void setMyNickName(String myNickName) {
+        this.myNickName = myNickName;
+    }
+
     // Provide a reference to the views for each data item
     // Complex data items may need more than one view per item, and
     // you provide access to all the views for a data item in a view holder
@@ -28,10 +39,18 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
         public TextView TextView_nickname;
         public TextView TextView_msg;
         public View rootView;
+
+        public LinearLayout layout;
+
+
         public MyViewHolder(View v) {
             super(v);
             TextView_nickname = v.findViewById(R.id.TextView_nickname);
             TextView_msg = v.findViewById(R.id.TextView_msg);
+
+            layout = v.findViewById(R.id.linearLayout_chat);
+
+
             rootView = v;
 
         }
@@ -43,7 +62,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
     public ChatAdapter(List<ChatData> myDataset, Context context, String myNickName) {
         //{"1","2"}
         mDataset = myDataset;
-        this.myNickName = myNickName;
+        setMyNickName(myNickName);
     }
 
     // Create new views (invoked by the layout manager)
@@ -68,9 +87,15 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
         holder.TextView_nickname.setText(chat.getNickname());
         holder.TextView_msg.setText(chat.getMsg());
 
-        if(chat.getNickname().equals(this.myNickName)) {
+        System.out.println("==========주목==============");
+        System.out.println("번들로 받아온 것 : " + chat.getNickname().toString());
+        System.out.println("origin : " + getMyNickName());
+
+        if(chat.getNickname().equals(getMyNickName())) {
             holder.TextView_msg.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
             holder.TextView_nickname.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_END);
+
+            holder.layout.setGravity(Gravity.RIGHT);
 
             //holder.TextView_msg.setBackgroundColor(Color.parseColor("#B3FF5E00"));
         }
@@ -78,6 +103,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
             holder.TextView_msg.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
             holder.TextView_nickname.setTextAlignment(View.TEXT_ALIGNMENT_TEXT_START);
 
+            holder.layout.setGravity(Gravity.LEFT);
             //holder.TextView_msg.setBackgroundColor(Color.parseColor("#E5E5E5"));
         }
 
