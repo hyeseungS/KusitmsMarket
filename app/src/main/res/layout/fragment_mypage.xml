@@ -7,7 +7,7 @@
     tools:context=".ui.mypage.MyPageFragment">
 
     <LinearLayout
-        android:id="@+id/myPage"
+        android:id="@+id/myPageLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginHorizontal="20dp"
@@ -65,86 +65,11 @@
             </LinearLayout>
         </LinearLayout>
 
-<<<<<<< HEAD
         <LinearLayout
-=======
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginHorizontal="10dp"
-            android:background="#aaa"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="8"
-        android:weightSum="5"
-        android:paddingBottom="20dp"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/btn_mypage_user_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="24sp"
-            android:background="#00FFFFFF"
-            android:text="내 정보"
-            android:textAlignment="viewStart"
-            android:drawableLeft="@drawable/ic_baseline_edit_24"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginHorizontal="10dp"
-            android:background="#aaa"/>
-
-        <Button
-            android:id="@+id/btn_mypage_event"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="#00FFFFFF"
-            android:drawableLeft="@drawable/ic_bolt_24px"
-            android:text="이벤트"
-            android:textAlignment="viewStart"
-            android:textSize="24sp" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginHorizontal="10dp"
-            android:background="#aaa"/>
-
-
-
-        <Button
-            android:id="@+id/btn_notice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textAlignment="viewStart"
-            android:textSize="24sp"
-            android:background="#00FFFFFF"
-            android:drawableLeft="@drawable/ic_baseline_chat_bubble_outline_24"
-            android:text="공지사항"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginHorizontal="10dp"
-            android:background="#aaa"/>
-
-        <Button
-            android:id="@+id/report_btn"
->>>>>>> 8c21ee64831ecdfd2edac98d89e98472ac6b122b
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:layout_marginTop="30dp"
-            android:paddingHorizontal="15dp"
-            android:weightSum="5">
-
+            android:layout_marginTop="20dp"
+            android:orientation="vertical" >
             <Button
                 android:id="@+id/btn_mypage_user_info"
                 android:layout_width="match_parent"
@@ -165,6 +90,7 @@
                 android:background="#D8D8D8" />
 
             <Button
+                android:id="@+id/btn_mypage_event"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

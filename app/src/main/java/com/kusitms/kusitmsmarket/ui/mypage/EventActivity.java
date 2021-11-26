@@ -10,6 +10,7 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.bumptech.glide.Glide;
 import com.kusitms.kusitmsmarket.R;
 import com.kusitms.kusitmsmarket.RetrofitClient;
 import com.kusitms.kusitmsmarket.adapter.EventMypageApater;
@@ -60,6 +61,11 @@ public class EventActivity extends AppCompatActivity {
 
                     for (String str:
                          imgurl) {
+
+                        if(str != null)
+                            Glide.with(getApplicationContext())
+                                    .load(str)
+                                    .into(imageView);
 
                         /* ===========문자열 받아오는 것까지는 가능한데 어떻게 띄우는지 모르겠어!!========*/
                         /*Thread uThread = new Thread() {

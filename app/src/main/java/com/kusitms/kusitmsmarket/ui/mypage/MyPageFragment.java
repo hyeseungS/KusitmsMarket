@@ -52,7 +52,7 @@ public class MyPageFragment extends Fragment {
         binding = FragmentMypageBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        LinearLayout linearLayout = (LinearLayout) root.findViewById(R.id.myPage);
+        LinearLayout linearLayout = (LinearLayout) root.findViewById(R.id.myPageLayout);
         linearLayout.setPadding(0, getStatusBarHeight(), 0, 0);
 
         btnNotice = root.findViewById(R.id.btn_notice);
