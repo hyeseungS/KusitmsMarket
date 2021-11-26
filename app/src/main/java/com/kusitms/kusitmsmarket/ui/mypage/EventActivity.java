@@ -44,8 +44,7 @@ public class EventActivity extends AppCompatActivity {
 
         listView = findViewById(R.id.event_list);
         imageView = findViewById(R.id.item_mypage_event);
-
-        EventMypageApater adapter = new EventMypageApater();
+        EventMypageApater adapter = new EventMypageApater(this);
         listView.setAdapter(adapter);
 
 
@@ -62,11 +61,8 @@ public class EventActivity extends AppCompatActivity {
                     for (String str:
                          imgurl) {
 
-                        if(str != null)
-                            Glide.with(getApplicationContext())
-                                    .load(str)
-                                    .into(imageView);
-
+                            adapter.addItem(str);
+//
                         /* ===========문자열 받아오는 것까지는 가능한데 어떻게 띄우는지 모르겠어!!========*/
                         /*Thread uThread = new Thread() {
                             @Override

@@ -8,6 +8,7 @@
         android:textSize="12sp"
         android:id="@+id/TextView_nickname"
         android:layout_width="match_parent"
+        android:textColor="@color/black"
         android:layout_height="wrap_content"/>
 
     <TextView
@@ -15,7 +16,5 @@
         android:id="@+id/TextView_msg"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
-
 
 </LinearLayout>
