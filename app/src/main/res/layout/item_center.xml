@@ -3,18 +3,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="343dp"
     android:layout_height="95dp"
-    android:orientation="horizontal">
+    android:layout_margin="10dp"
+    android:background="@drawable/grey_button"
+    android:gravity="center"
+    android:layout_gravity="center_horizontal"
+    android:orientation="horizontal"
+    android:padding="20dp">
 
-    <TextView
-        android:id="@+id/tv_center_number"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="95dp"
-        android:text="01"/>
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tv_center_content"
+        <TextView
+            android:id="@+id/tv_center_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="01"
+            android:textColor="#37474F"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_center_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="content"
+            android:textColor="#37474F"
+            android:textSize="16sp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/tv_move_content"
         android:layout_width="wrap_content"
-        android:layout_height="95dp"
-        android:text="content"/>
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
+
 
 </LinearLayout>

@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.kusitms.kusitmsmarket.AppTest;
 import com.kusitms.kusitmsmarket.R;
@@ -30,6 +32,8 @@ public class CategoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
 
+        LinearLayout linearLayout = findViewById(R.id.priceCategoryLayout);
+        linearLayout.setPadding(0, getStatusBarHeight(), 0, 0);
         Intent subCategoryActivity = new Intent(this, SubCategoryActivity.class);
 
         ANameRequest aNameRequest = new ANameRequest("");
@@ -192,5 +196,36 @@ public class CategoryActivity extends AppCompatActivity {
 
     }
 
+    //status bar의 높이 계산
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0)
+            result = getResources().getDimensionPixelSize(resourceId);
+
+        return result;
+    }
+
+    public void clickCategory(ANameRequest aNameRequest) {
+        Call<QuoteResponse> call = RetrofitClient.getAPIService().postQuoteAName(aNameRequest);
+
+        call.enqueue(new Callback<QuoteResponse>() {
+            @Override
+            public void onResponse(Call<QuoteResponse> call, Response<QuoteResponse> response) {
+                if (response.isSuccessful()) {
+                    Log.d("연결이 성공적 : ", response.body().toString());
+                    // 화면 만들어지면 하기
+
+                } else {
+                    Log.e("연결이 비정상적 : ", "error code : " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<QuoteResponse> call, Throwable t) {
+
+            }
+        });
+    }
 
 }

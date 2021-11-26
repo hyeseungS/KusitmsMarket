@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.kusitms.kusitmsmarket.R;
@@ -35,6 +36,9 @@ public class CenterActivity extends AppCompatActivity {
         ListViewQuestionAdapter adapter = new ListViewQuestionAdapter();
         listView.setAdapter(adapter);
 
+        LinearLayout linearLayout = findViewById(R.id.centerLayout);
+        linearLayout.setPadding(0, getStatusBarHeight(), 0, 0);
+
         Call<List<QuestionResponse>> call = RetrofitClient.getAPIService().getQuestion();
 
         call.enqueue(new Callback<List<QuestionResponse>>() {
@@ -63,8 +67,15 @@ public class CenterActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+    //status bar의 높이 계산
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0)
+            result = getResources().getDimensionPixelSize(resourceId);
 
-
+        return result;
     }
 }

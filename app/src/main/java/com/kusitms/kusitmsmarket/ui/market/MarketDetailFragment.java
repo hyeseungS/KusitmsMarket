@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -60,6 +61,19 @@ public class MarketDetailFragment extends Fragment implements View.OnClickListen
         TextView firstUserName = (TextView) root.findViewById(R.id.firstUserName);
         TextView personalScore = (TextView) root.findViewById(R.id.personalScore);
         TextView reviewContent = (TextView) root.findViewById(R.id.reviewContent);
+
+        Button btnChat = root.findViewById(R.id.chatting_btn);
+
+        btnChat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(getContext(), ChatActivity.class);
+                System.out.println("dfghjkl;elajklfladfjljsal");
+                startActivity(intent2);
+            }
+        });
+
+
 
         RatingBar totalRating = (RatingBar) root.findViewById(R.id.totalRating);
         RatingBar personalRating = (RatingBar) root.findViewById(R.id.personalRating);
@@ -194,11 +208,17 @@ public class MarketDetailFragment extends Fragment implements View.OnClickListen
                 break;
 
             case R.id.moreReview:
-                Intent intent = new Intent(getActivity(), ReviewActivity.class);
+                Intent intent1 = new Intent(getActivity(), ReviewActivity.class);
                 ReviewActivity.setStoreName(storeName);
                 ReviewActivity.setUserToken(((MainActivity) getActivity()).getUserToken());
                 ReviewActivity.setStoreScore(storeScore);
-                startActivity(intent);
+                startActivity(intent1);
+                break;
+
+            case R.id.chatting_btn:
+                Intent intent2 = new Intent(getContext(), ChatActivity.class);
+                System.out.println("dfghjkl;elajklfladfjljsal");
+                startActivity(intent2);
                 break;
 
         }

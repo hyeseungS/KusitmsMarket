@@ -1,7 +1,6 @@
 package com.kusitms.kusitmsmarket.ui.price;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,13 +10,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,8 +28,8 @@ import com.kusitms.kusitmsmarket.adapter.PriceAdapter;
 import com.kusitms.kusitmsmarket.databinding.FragmentPriceBinding;
 import com.kusitms.kusitmsmarket.model.PriceData;
 import com.kusitms.kusitmsmarket.request.MarketNameRequest;
-import com.kusitms.kusitmsmarket.response.NoticeResponse;
 import com.kusitms.kusitmsmarket.response.QuoteResponse;
+import com.kusitms.kusitmsmarket.ui.market.ChatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -94,8 +92,6 @@ public class PriceFragment extends Fragment {
     // 품목 액티비티
 
 
-
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         priceViewModel =
@@ -105,6 +101,9 @@ public class PriceFragment extends Fragment {
         View root = binding.getRoot();
 
         Intent categoryIntent = new Intent(getContext(), CategoryActivity.class);
+
+        LinearLayout linearLayout = (LinearLayout) root.findViewById(R.id.priceLayout);
+        linearLayout.setPadding(0, getStatusBarHeight(), 0, 0);
 
        /* final TextView textView = binding.textPrice;
         priceViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
@@ -120,9 +119,6 @@ public class PriceFragment extends Fragment {
         btnMarket = root.findViewById(R.id.btn_price_market);
         etMarket = root.findViewById(R.id.et_price_market);
         btnCategory = root.findViewById(R.id.btn_price_category);
-
-
-        test = root.findViewById(R.id.test);
 
 
         // init Data
@@ -169,7 +165,6 @@ public class PriceFragment extends Fragment {
         });
 
 
-
         // 초기화면
         img = R.mipmap.ic_launcher;
         category = "사과";
@@ -209,7 +204,7 @@ public class PriceFragment extends Fragment {
         callMain.enqueue(new Callback<QuoteResponse>() {
             @Override
             public void onResponse(Call<QuoteResponse> call, Response<QuoteResponse> response) {
-                if(response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     Log.d("연결이 성공적 : ", response.body().toString());
 
                     QuoteResponse quoteResponse = response.body();
@@ -226,7 +221,7 @@ public class PriceFragment extends Fragment {
                         unit = quote.getUnit();
 
                         String str = category;
-                        String result1 = str.substring(0,str.lastIndexOf("(")+1);
+                        String result1 = str.substring(0, str.lastIndexOf("(") + 1);
 
                         System.out.println(result1);
 
@@ -275,7 +270,7 @@ public class PriceFragment extends Fragment {
                 call.enqueue(new Callback<QuoteResponse>() {
                     @Override
                     public void onResponse(Call<QuoteResponse> call, Response<QuoteResponse> response) {
-                        if(response.isSuccessful()) {
+                        if (response.isSuccessful()) {
                             Log.d("연결이 성공적 : ", response.body().toString());
 
                             QuoteResponse quoteResponse = response.body();
@@ -292,14 +287,14 @@ public class PriceFragment extends Fragment {
                                 unit = quote.getUnit();
 
                                 String str = category;
-                                String result1 = str.substring(0,str.lastIndexOf("(")+1);
+                                String result1 = str.substring(0, str.lastIndexOf("(") + 1);
 
                                 System.out.println(result1);
 
 
                                 img = showCategoryImage(result1);
 
-                                if(img == R.drawable.ic_user) {
+                                if (img == R.drawable.ic_user) {
                                     img = showCategoryImage(category);
                                 }
 
@@ -330,22 +325,36 @@ public class PriceFragment extends Fragment {
             }
         });
 
-        test.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), ChatActivity.class);
-                startActivity(intent);
-            }
-        });
-
 
         return root;
+    }
+
+    //status bar의 높이 계산
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0)
+            result = getResources().getDimensionPixelSize(resourceId);
+
+        return result;
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
     }
 
     public int showCategoryImage(String category) {
@@ -355,37 +364,37 @@ public class PriceFragment extends Fragment {
             case "호박":
                 return R.drawable.ic_category_pumpkin;
             case "돼지고기":
-                return  R.drawable.ic_category_pork;
+                return R.drawable.ic_category_pork;
             case "사과":
-                return  R.drawable.ic_category_apple;
+                return R.drawable.ic_category_apple;
             case "양파":
-                return  R.drawable.ic_category_onion;
+                return R.drawable.ic_category_onion;
             case "배추":
-                return  R.drawable.ic_category_cabbage;
+                return R.drawable.ic_category_cabbage;
             case "달걀":
-                return  R.drawable.ic_category_egg;
+                return R.drawable.ic_category_egg;
             case "고구마":
-                return  R.drawable.ic_category_sweet_potato;
+                return R.drawable.ic_category_sweet_potato;
             case "닭고기":
-                return  R.drawable.ic_category_chicken;
+                return R.drawable.ic_category_chicken;
             case "오징어(":
                 return R.drawable.ic_category_squid;
             case "호박(":
                 return R.drawable.ic_category_pumpkin;
             case "돼지고기(":
-                return  R.drawable.ic_category_pork;
+                return R.drawable.ic_category_pork;
             case "사과(":
-                return  R.drawable.ic_category_apple;
+                return R.drawable.ic_category_apple;
             case "양파(":
-                return  R.drawable.ic_category_onion;
+                return R.drawable.ic_category_onion;
             case "배추(":
-                return  R.drawable.ic_category_cabbage;
+                return R.drawable.ic_category_cabbage;
             case "달걀(":
-                return  R.drawable.ic_category_egg;
+                return R.drawable.ic_category_egg;
             case "고구마(":
-                return  R.drawable.ic_category_sweet_potato;
+                return R.drawable.ic_category_sweet_potato;
             case "닭고기(":
-                return  R.drawable.ic_category_chicken;
+                return R.drawable.ic_category_chicken;
         }
         return R.drawable.ic_category_pumpkin;
     }

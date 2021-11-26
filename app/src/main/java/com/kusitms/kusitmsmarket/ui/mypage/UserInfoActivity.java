@@ -11,6 +11,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -88,6 +89,9 @@ public class UserInfoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         token = bundle.getString("user_token");
+
+        LinearLayout linearLayout = findViewById(R.id.userInfoLayout);
+        linearLayout.setPadding(0, getStatusBarHeight(), 0, 0);
 
         Call<UserInfoResponse> callUser = RetrofitClient.getAPIService().getUserInfoData(token);
 
@@ -312,5 +316,15 @@ public class UserInfoActivity extends AppCompatActivity {
 
             }
         });
+
+    }
+    //status bar의 높이 계산
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0)
+            result = getResources().getDimensionPixelSize(resourceId);
+
+        return result;
     }
 }

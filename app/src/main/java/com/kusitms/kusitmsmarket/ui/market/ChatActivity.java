@@ -1,4 +1,4 @@
-package com.kusitms.kusitmsmarket.ui.price;
+package com.kusitms.kusitmsmarket.ui.market;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,8 +37,6 @@ public class ChatActivity extends AppCompatActivity {
     private LinearLayoutManager mLayoutManger;
 
     private DatabaseReference myRef;
-
-
 
     // 이름 정해주기
     String nick = "nick1";

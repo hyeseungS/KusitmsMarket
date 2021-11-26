@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.price.SubCategoryActivity"
+    android:id="@+id/subCategoryLayout"
+    android:layout_marginHorizontal="20dp"
     android:orientation="vertical"
     android:gravity="center">
 
@@ -17,6 +19,7 @@
 
     <ListView
         android:id="@+id/sub_category_lv"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

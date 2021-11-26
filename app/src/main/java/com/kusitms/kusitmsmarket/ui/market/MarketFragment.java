@@ -65,13 +65,13 @@ public class MarketFragment extends Fragment {
                             .load(img.get(0))
                             .into(imageView1);
 
-//                    Glide.with(getContext())
-//                            .load(img.get(1))
-//                            .into(imageView2);
-//
-//                    Glide.with(getContext())
-//                            .load(img.get(2))
-//                            .into(imageView3);
+                    Glide.with(getContext())
+                            .load(img.get(1))
+                            .into(imageView2);
+
+                    Glide.with(getContext())
+                            .load(img.get(2))
+                            .into(imageView3);
 
                     Log.d("test", "성공");
                 }

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import com.kusitms.kusitmsmarket.AppTest;
@@ -42,6 +43,8 @@ public class SubCategoryActivity extends AppCompatActivity {
             //광고 불러오는 코드
         }
 
+        LinearLayout linearLayout = findViewById(R.id.subCategoryLayout);
+        linearLayout.setPadding(0, getStatusBarHeight(), 0, 0);
 
         Intent intent = getIntent();
         categoryName = intent.getStringExtra("category");
@@ -117,5 +120,15 @@ public class SubCategoryActivity extends AppCompatActivity {
             }
         });*/
 
+    }
+
+    //status bar의 높이 계산
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0)
+            result = getResources().getDimensionPixelSize(resourceId);
+
+        return result;
     }
 }

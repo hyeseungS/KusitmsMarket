@@ -11,9 +11,9 @@
     <application
         android:name=".AppTest"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:icon="@mipmap/ic_logo"
+        android:label="시장의 민족"
+        android:roundIcon="@mipmap/ic_logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.KusitmsMarket.NoActionBar"
         android:usesCleartextTraffic="true">
@@ -27,7 +27,7 @@
             android:name=".ui.market.ReviewActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.price.ChatActivity"
+            android:name=".ui.market.ChatActivity"
             android:exported="false" />
         <activity
             android:name=".ui.price.CategoryActivity"
@@ -48,6 +48,12 @@
             android:name=".ui.mypage.ReportLocationActivity"
             android:exported="true" />
         <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".RegisterActivity"
+            android:exported="true" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true"
             android:label="@string/app_name">
@@ -57,12 +63,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".RegisterActivity"
-            android:exported="true" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true" />
 
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"

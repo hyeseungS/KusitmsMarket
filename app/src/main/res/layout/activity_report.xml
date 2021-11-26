@@ -11,7 +11,7 @@
         android:id="@+id/reportLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="20dp"
+        android:layout_margin="15dp"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="20dp"
         tools:layout_editor_absoluteY="-261dp">
@@ -62,14 +62,6 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>
-        <TextView
-            android:id="@+id/tv_report_location"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:text="가게위치"
-            android:textSize="24sp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -239,8 +231,13 @@
         <Button
             android:id="@+id/report_btn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="제보하기" />
+            android:layout_height="70dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/orange_button"
+            android:text="제보하기"
+            android:textColor="#FFF9FF"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            app:backgroundTint="@null" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

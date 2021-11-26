@@ -2,90 +2,91 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/priceCategoryLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingRight="2dp"
     tools:context=".ui.price.CategoryActivity">
 
     <GridLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:rowCount="3"
-        android:columnCount="3">
+        android:columnCount="3"
+        android:rowCount="3">
 
         <ImageButton
             android:id="@+id/category_squid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:backgroundTint="#ffffff"
-            android:src="@drawable/ic_category_squid"
-            android:layout_gravity="center"/>
+            android:src="@drawable/ic_category_squid" />
 
         <ImageButton
             android:id="@+id/category_pumpkin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:backgroundTint="#ffffff"
-            android:src="@drawable/ic_category_pumpkin"
-            android:layout_gravity="center"/>
+            android:src="@drawable/ic_category_pumpkin" />
 
         <ImageButton
             android:id="@+id/category_pork"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:backgroundTint="#ffffff"
-            android:src="@drawable/ic_category_pork"
-            android:layout_gravity="center"/>
+            android:src="@drawable/ic_category_pork" />
 
         <ImageButton
             android:id="@+id/category_apple"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:backgroundTint="#ffffff"
-            android:src="@drawable/ic_category_apple"
-            android:layout_gravity="center"/>
+            android:src="@drawable/ic_category_apple" />
 
         <ImageButton
             android:id="@+id/category_onion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:backgroundTint="#ffffff"
-            android:src="@drawable/ic_category_onion"
-            android:layout_gravity="center"/>
+            android:src="@drawable/ic_category_onion" />
 
         <ImageButton
             android:id="@+id/category_cabbage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:backgroundTint="#ffffff"
-            android:src="@drawable/ic_category_cabbage"
-            android:layout_gravity="center"/>
+            android:src="@drawable/ic_category_cabbage" />
 
         <ImageButton
             android:id="@+id/category_egg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:backgroundTint="#ffffff"
-            android:src="@drawable/ic_category_egg"
-            android:layout_gravity="center"/>
+            android:src="@drawable/ic_category_egg" />
 
         <ImageButton
             android:id="@+id/category_sweet_potato"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:backgroundTint="#ffffff"
-            android:src="@drawable/ic_category_sweet_potato"
-            android:layout_gravity="center"/>
+            android:src="@drawable/ic_category_sweet_potato" />
 
         <ImageButton
             android:id="@+id/category_chicken"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:backgroundTint="#ffffff"
-            android:src="@drawable/ic_category_chicken"
-            android:layout_gravity="center"/>
+            android:src="@drawable/ic_category_chicken" />
 
     </GridLayout>
-
 
 
 </LinearLayout>
