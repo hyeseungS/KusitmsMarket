@@ -1,4 +1,4 @@
-package com.kusitms.kusitmsmarket;
+package com.kusitms.kusitmsmarket.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;

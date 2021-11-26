@@ -16,6 +16,52 @@
         tools:layout_editor_absoluteX="20dp"
         tools:layout_editor_absoluteY="-261dp">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="가게 위치"
+                android:textColor="#6D3805"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/edit_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:text="수정하기"
+                android:textColor="#FF5E00"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/white_layout">
+
+            <TextView
+                android:id="@+id/reportLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:gravity="center"
+                android:text="주소"
+                android:textColor="#37474F"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
         <TextView
             android:id="@+id/tv_report_location"
             android:layout_width="match_parent"
@@ -28,30 +74,64 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginTop="30dp"
             android:text="가게 정보"
-            android:textSize="24sp" />
+            android:textColor="#6D3805"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:text="시장 이름"
+            android:textColor="#FF5E00"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
 
         <EditText
             android:id="@+id/et_report_market_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
-            android:hint="시장 이름" />
+            android:background="@drawable/white_layout"
+            android:hint="ex) 만리시장"
+            android:padding="10dp"
+            android:textColorHint="#CECECE"
+            android:textSize="18sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:text="가게 이름"
+            android:textColor="#FF5E00"
+            android:textSize="13sp"
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/et_report_store_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:hint="가게 이름" />
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/white_layout"
+            android:hint="ex) 진미반찬"
+            android:padding="10dp"
+            android:textColorHint="#CECECE"
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="시장 종류"
-            android:textSize="24sp" />
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:text="시장 종류(선택)"
+            android:textColor="#FF5E00"
+            android:textSize="13sp"
+            android:textStyle="bold" />
 
         <RadioGroup
             android:id="@+id/market_radioGroup"
@@ -65,7 +145,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="상설 시장"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
 
             <RadioButton
                 android:id="@+id/rg_every_not"
@@ -73,16 +153,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="5일장"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
         </RadioGroup>
 
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="결제 방식"
-            android:textSize="24sp" />
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
+            android:text="시장 이름(선택)"
+            android:textColor="#FF5E00"
+            android:textSize="13sp"
+            android:textStyle="bold" />
 
         <GridLayout
             android:id="@+id/pay_checkBox"
@@ -97,7 +180,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="현금"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
 
             <CheckBox
                 android:id="@+id/checkbox_card"
@@ -105,7 +188,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="카드"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
 
             <CheckBox
                 android:id="@+id/checkbox_account_transfer"
@@ -113,14 +196,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="계좌 이체"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
 
             <CheckBox
                 android:id="@+id/checkbox_gift_card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="온누리"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
 
             <CheckBox
                 android:id="@+id/checkbox_zero_pay"
@@ -128,15 +211,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="제로 페이"
-                android:textSize="20sp" />
+                android:textSize="15sp" />
         </GridLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="10dp"
             android:text="운영 시간"
-            android:textSize="24sp" />
+            android:textColor="#FF5E00"
+            android:textSize="13sp"
+            android:textStyle="bold" />
 
        <!-- 운영시간 설정 -->
 

@@ -18,6 +18,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.kusitms.kusitmsmarket.databinding.ActivityMainBinding;
+import com.kusitms.kusitmsmarket.ui.market.ReviewActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,8 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         Intent intent = getIntent();
-        token = intent.getStringExtra("user_token");
-
+        token = intent.getStringExtra("userToken");
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -75,5 +75,11 @@ public class MainActivity extends AppCompatActivity {
     public void moveToDetail(){
         navController.navigate(R.id.action_navigation_market_to_market_detail);
     }
+
+    // home에서 마커 클릭하면 MarketDetailFragment로 이동
+    public void moveToMarker(){
+        navController.navigate(R.id.action_navigation_home_to_market_detail);
+    }
+
 
 }

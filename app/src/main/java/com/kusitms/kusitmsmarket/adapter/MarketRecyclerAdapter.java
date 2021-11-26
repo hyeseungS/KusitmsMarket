@@ -1,9 +1,5 @@
-package com.kusitms.kusitmsmarket;
+package com.kusitms.kusitmsmarket.adapter;
 
-import android.content.Intent;
-import android.location.Address;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,17 +8,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.kusitms.kusitmsmarket.MainActivity;
+import com.kusitms.kusitmsmarket.model.MarketItem;
+import com.kusitms.kusitmsmarket.R;
 import com.kusitms.kusitmsmarket.ui.market.MarketDetailFragment;
-import com.naver.maps.geometry.LatLng;
-import com.naver.maps.map.CameraUpdate;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class MarketRecyclerAdapter extends RecyclerView.Adapter<MarketRecyclerAdapter.ViewHolder> {
 

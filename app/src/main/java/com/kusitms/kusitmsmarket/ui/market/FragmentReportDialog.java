@@ -18,19 +18,21 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class FragmentEditDialog extends DialogFragment implements View.OnClickListener{
+public class FragmentReportDialog extends DialogFragment implements View.OnClickListener{
     private static final String TAG = "CustomDialogFragment";
-    private static final String ARG_DIALOG_MAIN_MSG = "dialog_main_msg";
+    private static final String ARG_DIALOG_MAIN_MSG = "dialog_report_msg";
 
     private String mMainMsg;
-    private EditText editContent;
-    private String storeName = MarketDetailFragment.getStoreName();
 
-    public static FragmentEditDialog newInstance(String mainMsg) {
+    private static String userName;
+    private static String reviewContent;
+    private EditText editContent;
+
+    public static FragmentReportDialog newInstance(String mainMsg) {
         Bundle bundle = new Bundle();
         bundle.putString(ARG_DIALOG_MAIN_MSG, mainMsg);
 
-        FragmentEditDialog fragment = new FragmentEditDialog();
+        FragmentReportDialog fragment = new FragmentReportDialog();
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -53,21 +55,17 @@ public class FragmentEditDialog extends DialogFragment implements View.OnClickLi
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        View view = getActivity().getLayoutInflater().inflate(R.layout.edit_dialog, null);
-
-        // 저장, 취소 버튼 이벤트
-        view.findViewById(R.id.dialog_store_btn).setOnClickListener(this);
+        View view = getActivity().getLayoutInflater().inflate(R.layout.review_report_dialog, null);
+        view.findViewById(R.id.dialog_report_btn).setOnClickListener(this);
         view.findViewById(R.id.dialog_cancel_btn).setOnClickListener(this);
         builder.setView(view);
         Dialog dialog = builder.create();
 
+        TextView name = (TextView) view.findViewById(R.id.finalUserName);
+        editContent = (EditText) view.findViewById(R.id.reportContent);
 
-        editContent = (EditText) view.findViewById(R.id.storeContent);
-        TextView userName = (TextView) view.findViewById(R.id.finalUserName);
+        name.setText(userName);
 
-        // 최종 작성자 가져오기
-        Bundle mArgs = getArguments();
-        userName.setText(mArgs.getString("userName"));
         return dialog;
     }
 
@@ -84,6 +82,10 @@ public class FragmentEditDialog extends DialogFragment implements View.OnClickLi
     }
 */
 
+    public static void setUserName(String u) {userName = u;}
+
+    public static void setReviewContent(String c) {reviewContent = c;}
+
     private void dismissDialog() {
         this.dismiss();
     }
@@ -96,15 +98,14 @@ public class FragmentEditDialog extends DialogFragment implements View.OnClickLi
     public void onClick(View v) {
 
         switch (v.getId()) {
-            case R.id.dialog_store_btn:
+            case R.id.dialog_review_btn:
                 // storeName, memo
                 String memo = editContent.getText().toString();
 
-                // 토큰, 가게 정보 수정 내용 보내기 -> 응답
+                // 토큰, 신고 내용 보내기 -> 응답
                 String token = ((MainActivity) getActivity()).getUserToken();
-                System.out.println(storeName);
 
-                Call<Void> call = RetrofitClient.getAPIService().setStoreModify(token, memo, storeName);
+                Call<Void> call = RetrofitClient.getAPIService().setStoreReviewReport(token, memo, reviewContent);
 
                 call.enqueue(new Callback<Void>() {
                     @Override

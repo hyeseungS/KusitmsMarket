@@ -1,4 +1,4 @@
-package com.kusitms.kusitmsmarket;
+package com.kusitms.kusitmsmarket.response;
 
 import com.google.gson.annotations.SerializedName;
 
@@ -33,9 +33,15 @@ public class StoreList {
         private boolean storeGiftcard;
         @SerializedName("userName")
         private String userName;
+        @SerializedName("storeScore")
+        private double storeScore;
+        @SerializedName("storeLink")
+        private String storeLink;
+        @SerializedName("storeTime")
+        private String storeTime;
 
         public StoreData(String storeName, String storeAddress, String storePhone, String storeCategory,
-                         String marketName, boolean storeGiftcard, String userName) {
+                         String marketName, boolean storeGiftcard, String userName, double storeScore, String storeLink, String storeTime) {
             this.storeName = storeName;
             this.storeAddress = storeAddress;
             this.storePhone = storePhone;
@@ -43,6 +49,9 @@ public class StoreList {
             this.marketName = marketName;
             this.storeGiftcard = storeGiftcard;
             this.userName = userName;
+            this.storeScore = storeScore;
+            this.storeLink = storeLink;
+            this.storeTime = storeTime;
         }
 
         public String getStoreName() {
@@ -99,6 +108,28 @@ public class StoreList {
 
         public void setUserName(String userName) {
             this.userName = userName;
+        }
+
+        public double getStoreScore() { return storeScore; }
+
+        public void setStoreScore(double storeScore) {
+            this.storeScore = storeScore;
+        }
+
+        public String getStoreLink() {
+            return storeLink;
+        }
+
+        public void setStoreLink(String storeLink) {
+            this.storeLink = storeLink;
+        }
+
+        public String getStoreTime() {
+            return storeTime;
+        }
+
+        public void setStoreTime(String storeTime) {
+            this.storeTime = storeTime;
         }
     }
 }
