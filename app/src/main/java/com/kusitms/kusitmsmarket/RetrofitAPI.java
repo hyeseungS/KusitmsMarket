@@ -1,11 +1,14 @@
 package com.kusitms.kusitmsmarket;
 
+import com.kusitms.kusitmsmarket.request.ANameRequest;
 import com.kusitms.kusitmsmarket.request.LoginRequest;
+import com.kusitms.kusitmsmarket.request.MarketNameRequest;
 import com.kusitms.kusitmsmarket.request.ReportRequest;
 import com.kusitms.kusitmsmarket.request.SignUpRequest;
 import com.kusitms.kusitmsmarket.response.DeleteResponse;
 import com.kusitms.kusitmsmarket.response.NoticeResponse;
 import com.kusitms.kusitmsmarket.response.QuestionResponse;
+import com.kusitms.kusitmsmarket.response.QuoteResponse;
 import com.kusitms.kusitmsmarket.response.ReportResponse;
 import com.kusitms.kusitmsmarket.response.SignUpResponse;
 import com.kusitms.kusitmsmarket.response.UserInfoResponse;
@@ -115,5 +118,14 @@ public interface RetrofitAPI {
     @POST("/mypage/report-store")
     Call<ReportResponse> postReport(@Header("X-AUTH-TOKEN") String token,
                                     @Body ReportRequest request);
+
+    // 시장 시세 제공 api (시장별)
+    @POST("/quote/m-name")
+    Call<QuoteResponse> postQuoteMarket(@Body MarketNameRequest marketNameRequest);
+
+    // 시장 시세 제공 api (품목별)
+    @POST("/quote/a-name")
+    Call<QuoteResponse> postQuoteAName(@Body ANameRequest aNameRequest);
+
 
 }
