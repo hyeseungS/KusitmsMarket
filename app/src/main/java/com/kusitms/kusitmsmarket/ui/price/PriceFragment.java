@@ -11,11 +11,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -103,6 +105,9 @@ public class PriceFragment extends Fragment {
         View root = binding.getRoot();
 
         Intent categoryIntent = new Intent(getContext(), CategoryActivity.class);
+
+        LinearLayout linearLayout = (LinearLayout) root.findViewById(R.id.priceLayout);
+        linearLayout.setPadding(0, getStatusBarHeight(), 0, 0);
 
        /* final TextView textView = binding.textPrice;
         priceViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
@@ -311,9 +316,31 @@ public class PriceFragment extends Fragment {
         return root;
     }
 
+    //status bar의 높이 계산
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0)
+            result = getResources().getDimensionPixelSize(resourceId);
+
+        return result;
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
     }
 }

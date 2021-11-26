@@ -73,7 +73,7 @@ public class ReportActivity extends AppCompatActivity {
         Intent intentReportLocation = new Intent(this, ReportLocationActivity.class);
 
         // xml 연결
-        tvStoreLocation = findViewById(R.id.tv_report_location);
+        tvStoreLocation = findViewById(R.id.reportLocation);
         etMarketName = findViewById(R.id.et_report_market_name);
         etStoreName = findViewById(R.id.et_report_store_name);
         rgMarketType = findViewById(R.id.market_radioGroup);
@@ -86,16 +86,7 @@ public class ReportActivity extends AppCompatActivity {
         chkZeroPay = findViewById(R.id.checkbox_zero_pay);
         btnReport = findViewById(R.id.report_btn);
 
-        tvStoreLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(intentReportLocation);
-
-                // 정보 가져와서
-                // 주소 setText하기
-
-            }
-        });
+        tvStoreLocation.setText(address);
 
         // 상설, 비상설 버튼을 누르면
         rgMarketType.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {

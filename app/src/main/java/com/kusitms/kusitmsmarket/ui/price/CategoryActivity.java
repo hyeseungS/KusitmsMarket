@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import com.kusitms.kusitmsmarket.R;
 import com.kusitms.kusitmsmarket.RetrofitClient;
@@ -26,6 +28,9 @@ public class CategoryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
+
+        LinearLayout linearLayout = findViewById(R.id.priceCategoryLayout);
+        linearLayout.setPadding(0, getStatusBarHeight(), 0, 0);
 
         ANameRequest aNameRequest = new ANameRequest("");
 
@@ -123,6 +128,16 @@ public class CategoryActivity extends AppCompatActivity {
 
 
 
+    }
+
+    //status bar의 높이 계산
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0)
+            result = getResources().getDimensionPixelSize(resourceId);
+
+        return result;
     }
 
     public void clickCategory(ANameRequest aNameRequest) {

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -50,6 +51,9 @@ public class MyPageFragment extends Fragment {
 
         binding = FragmentMypageBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        LinearLayout linearLayout = (LinearLayout) root.findViewById(R.id.myPage);
+        linearLayout.setPadding(0, getStatusBarHeight(), 0, 0);
 
         btnNotice = root.findViewById(R.id.btn_notice);
         btnUserInfo = root.findViewById(R.id.btn_mypage_user_info);
@@ -139,6 +143,7 @@ public class MyPageFragment extends Fragment {
         btnReport.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Intent intentReportLocationActivity = new Intent(getActivity(), ReportLocationActivity.class);
                 Intent intentReportActivity = new Intent(getActivity(), ReportActivity.class);
 //
 //                // 토큰 받는 과정
@@ -154,7 +159,7 @@ public class MyPageFragment extends Fragment {
                 intentReportActivity.putExtras(sendBundle);
 
 
-                startActivity(intentReportActivity);
+                startActivity(intentReportLocationActivity);
             }
         });
 
@@ -179,13 +184,18 @@ public class MyPageFragment extends Fragment {
                 startActivity(intentCenterActivity);
             }
         });
-//        myPageViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-//            @Override
-//            public void onChanged(@Nullable String s) {
-//                textView.setText(s);
-//            }
-//        });
+
         return root;
+    }
+
+    //status bar의 높이 계산
+    public int getStatusBarHeight() {
+        int result = 0;
+        int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
+        if (resourceId > 0)
+            result = getResources().getDimensionPixelSize(resourceId);
+
+        return result;
     }
 
     @Override
