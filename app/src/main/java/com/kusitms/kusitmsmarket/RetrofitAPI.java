@@ -19,6 +19,7 @@ import com.kusitms.kusitmsmarket.response.ReportResponse;
 import com.kusitms.kusitmsmarket.response.SignUpResponse;
 import com.kusitms.kusitmsmarket.response.UserInfoResponse;
 import com.kusitms.kusitmsmarket.response.UserToken;
+import com.kusitms.kusitmsmarket.response.ValidateResponse;
 
 import java.lang.reflect.Type;
 import java.util.List;
@@ -178,7 +179,7 @@ public interface RetrofitAPI {
 
     // 닉네임 중복확인
     @GET("/api/check-duplicate/nickname/{nickname}")
-    Call<Boolean> getCheckDuplicateNickname(@Path("nickname") String nickname);
+    Call<ValidateResponse> getCheckDuplicateNickname(@Path("nickname") String nickname);
 
 
     // 휴대전화 인증

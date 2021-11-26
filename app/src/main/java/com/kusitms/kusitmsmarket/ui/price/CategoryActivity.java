@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.kusitms.kusitmsmarket.AppTest;
 import com.kusitms.kusitmsmarket.R;
 import com.kusitms.kusitmsmarket.RetrofitClient;
 import com.kusitms.kusitmsmarket.request.ANameRequest;
@@ -36,6 +37,8 @@ public class CategoryActivity extends AppCompatActivity {
         Intent subCategoryActivity = new Intent(this, SubCategoryActivity.class);
 
         ANameRequest aNameRequest = new ANameRequest("");
+
+
 
         // 연동
         btnSquid = findViewById(R.id.category_squid);
