@@ -475,7 +475,7 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
                     Marker marker = new Marker();
                     marker.setPosition(markersPosition.get(i));
                     marker.setMap(naverMap);
-                    String sn = "환일종합식품";
+                    String sn = "진미반찬";
                     marker.setOnClickListener(new Overlay.OnClickListener() {
                         @Override
                         public boolean onClick(@NonNull Overlay overlay) {

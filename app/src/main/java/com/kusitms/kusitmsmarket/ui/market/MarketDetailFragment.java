@@ -1,6 +1,8 @@
 package com.kusitms.kusitmsmarket.ui.market;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,6 +28,8 @@ import com.kusitms.kusitmsmarket.response.Review;
 import com.kusitms.kusitmsmarket.response.StoreList;
 import com.kusitms.kusitmsmarket.databinding.FragmentMarketDetailBinding;
 
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.List;
 
 import retrofit2.Call;
@@ -69,7 +73,7 @@ public class MarketDetailFragment extends Fragment implements View.OnClickListen
         TextView reviewContent = (TextView) root.findViewById(R.id.reviewContent);
 
         ImageButton heart = (ImageButton) root.findViewById(R.id.heart);
-        if(storeName == "환일종합식품") {
+        if(storeName == "진미반찬") {
             heart.setBackgroundResource(R.drawable.ic_favorite_border);
         }
        Button btnChat = root.findViewById(R.id.chatting_btn);
@@ -138,8 +142,12 @@ public class MarketDetailFragment extends Fragment implements View.OnClickListen
                     List<String> dataList = resource.data;
                     imgCnt.setText("(" + resource.count + "개)");
                     if(dataList.size() != 0) {
-                        if (dataList.get(0) != null)
+                        if (dataList.get(0) != null) {
                             img1.setImageURI(Uri.parse(dataList.get(0)));
+
+
+                        }
+
                         if (dataList.size() > 1 && dataList.get(1) != null)
                             img2.setImageURI(Uri.parse(dataList.get(1)));
                     }

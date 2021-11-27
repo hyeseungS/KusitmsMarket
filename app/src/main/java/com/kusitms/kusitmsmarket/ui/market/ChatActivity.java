@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,7 +36,7 @@ public class ChatActivity extends AppCompatActivity {
     private String nick = "익명"  + (int)(Math.random()*100);
 
     private EditText EditText_chat;
-    private Button Button_send;
+    private ImageButton Button_send;
     private DatabaseReference myRef;
 
     @Override

@@ -103,25 +103,25 @@ public class FragmentReportDialog extends DialogFragment implements View.OnClick
                 String memo = editContent.getText().toString();
 
                 // 토큰, 신고 내용 보내기 -> 응답
-                String token = ((MainActivity) getActivity()).getUserToken();
-
-                Call<Void> call = RetrofitClient.getAPIService().setStoreReviewReport(token, memo, reviewContent);
-
-                call.enqueue(new Callback<Void>() {
-                    @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
-                        if(response.isSuccessful()) {
-                            Log.d("연결이 성공적 : ", "수정 사항 전송");
-
-                        } else {
-                            Log.e("연결이 비정상적 : ", "error code : " + response.code());
-                        }
-                    }
-                    @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
-                        Log.e("연결실패", t.getMessage());
-                    }
-                });
+//                String token = ((MainActivity) getActivity()).getUserToken();
+//
+//                Call<Void> call = RetrofitClient.getAPIService().setStoreReviewReport(token, memo, reviewContent);
+//
+//                call.enqueue(new Callback<Void>() {
+//                    @Override
+//                    public void onResponse(Call<Void> call, Response<Void> response) {
+//                        if(response.isSuccessful()) {
+//                            Log.d("연결이 성공적 : ", "수정 사항 전송");
+//
+//                        } else {
+//                            Log.e("연결이 비정상적 : ", "error code : " + response.code());
+//                        }
+//                    }
+//                    @Override
+//                    public void onFailure(Call<Void> call, Throwable t) {
+//                        Log.e("연결실패", t.getMessage());
+//                    }
+//                });
                 finishDialog();
                 break;
 
