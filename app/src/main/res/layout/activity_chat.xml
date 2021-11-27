@@ -4,24 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.market.ChatActivity"
     android:orientation="vertical"
-    android:weightSum="1">
+    android:weightSum="1"
+    tools:context=".ui.market.ChatActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="실시간 채팅"
         android:layout_marginVertical="30dp"
         android:gravity="center"
-        android:textSize="24sp"/>
+        android:text="실시간 채팅"
+        android:textSize="24sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/my_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:scrollbars="vertical"/>
+        android:scrollbars="vertical" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,13 +33,17 @@
             android:id="@+id/EditText_chat"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
-        <Button
+        <ImageButton
             android:id="@+id/Button_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_outline_send_24"
             android:text="전송"
-            android:layout_width="80dp"
-            android:layout_height="match_parent"/>
+            android:layout_gravity="center"
+            android:background="#00FF0000"
+            app:backgroundTint="@null" />
 
     </LinearLayout>
 
